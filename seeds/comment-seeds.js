@@ -30,11 +30,7 @@ const commentdata = [
         user_id: "1",
         post_id: "20",
     },
-    {
-        body: "This recipe asks for weird ingredients",
-        user_id: "6",
-        post_id: "7",
-    },
+    
     {
        body: "I loved cooking this recipe!",
         user_id: "7",
