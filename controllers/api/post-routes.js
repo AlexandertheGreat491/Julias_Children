@@ -3,6 +3,7 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
 
+
 //GET route for all posts
 router.get("/", (req, res) => {
   console.log("======================");
@@ -81,7 +82,7 @@ router.get("/:id", (req, res) => {
 });
 
 //POST route for creating a new post
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
   Post.create({
     title: req.body.title,
     genre: req.body.genre,

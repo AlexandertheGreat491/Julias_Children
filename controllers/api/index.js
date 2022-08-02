@@ -12,4 +12,4 @@ router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);
 
-module.express = router;
+module.exports = router;
