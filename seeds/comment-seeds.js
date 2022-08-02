@@ -36,12 +36,12 @@ const commentdata = [
         post_id: "7",
     },
     {
-        body: "I loved cooking this recipe!",
+       body: "I loved cooking this recipe!",
         user_id: "7",
         post_id: "4",
     },
     {
-        body: "I probably won't make this recipe again.",
+        body: "I probably will make this recipe again.",
         user_id: "6",
         post_id: "12",
     },
