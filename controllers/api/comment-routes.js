@@ -13,10 +13,9 @@ router.get("/", (req, res) => {
 
 //POST route for creating new comments
 router.post("/", (req, res) => {
-  if (req.session) {
     Comment.create({
       body: req.body.body,
-      user_id: req.session.user_id,
+      user_id: req.body.user_id,
       post_id: req.body.post_id,
     })
       .then((dbCommentData) => res.json(dbCommentData))
@@ -25,11 +24,10 @@ router.post("/", (req, res) => {
         res.status(400).json(err);
       });
   }
-});
+);
 
 //DELETE route to remove comments from the database by id
 router.delete("/:id", (req, res) => {
-  if (req.session) {
     Comment.destroy({
       where: {
         id: req.params.id,
@@ -47,6 +45,6 @@ router.delete("/:id", (req, res) => {
         res.status(500).json(err);
       });
   }
-});
+);
 
 module.exports = router;

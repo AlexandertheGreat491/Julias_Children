@@ -23,12 +23,12 @@ router.get("/", (req, res) => {
         attributes: ["id", "body", "user_id", "post_id"],
         include: {
           model: User,
-          attributes: ["id", "username", "email", "password"],
+          attributes: ["id", "username", "email"],
         },
       },
       {
         model: User,
-        attributes: ["id", "username", "email", "password"],
+        attributes: ["id", "username", "email"],
       },
     ],
   })
@@ -57,13 +57,13 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["id", "username", "email", "password"],
+        attributes: ["id", "username", "email"],
       },
       {
         model: Comment,
         include: {
           model: User,
-          attributes: ["id", "username", "email", "password"],
+          attributes: ["id", "username", "email"],
         },
       },
     ],
@@ -87,6 +87,7 @@ router.post("/", (req, res) => {
     title: req.body.title,
     genre: req.body.genre,
     ingredients: req.body.ingredients,
+    difficulty: req.body.difficulty,
     requirements: req.body.requirements,
     user_id: req.body.user_id,
   })
