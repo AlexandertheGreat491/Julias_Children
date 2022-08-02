@@ -1,0 +1,48 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link href='../stylesheets/styles.css' rel="stylesheet"/>
+    <title>Recipe Finder</title>
+  </head>
+  <body class="relative">
+    <header class="flex justify-between px-5 pt-2">
+      <h1 class="text-blue-500 text-2xl">
+        Recipe Finder
+      </h1>
+      <nav class="flex space-x-2">
+        <button>login</button>
+        <button>logout</button>
+      </nav>
+    </header>
+    <main>
+      <!-- {{body}} -->
+      <section class="mt-10 px-5 flex flex-wrap w-11/12 mx-auto">
+        <div id="page-header mb-3">
+          <h1>What's Cooking Good Lookin'</h1>
+        </div>
+        <div id="all-recipes" class="flex flex-col content-start gap-8 w-full">
+          <!-- Recipe Card Partial to be looped-->
+          <div class="recipe-card flex flex-col justify-between align-middle relative h-64">
+            <div class="recipe-card-content flex flex-col justify-center">
+              <img class="w-full h-52 object-cover" src="https://via.placeholder.com/200x200.png?text=Recipe+1">
+              <div class="recipe-card-info flex flex-col justify-center align-middle w-11/12 p-3 bg-blue-300 absolute -bottom-0">
+                <h2 class="font-bold">Recipe Title</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit voluptates quo.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Recipe Card Partial End-->
+          
+        </div>
+      </section>
+      <!-- End body -->
+    </main>
+    <footer class="flex justify-evenly px-5 absolute bottom-0 inset-x-0 text-center mt-10">
+      <h1 class="font-bold">
+        Recipe Finder
+      </h1>
+    </footer>
+  </body>
+</html>
