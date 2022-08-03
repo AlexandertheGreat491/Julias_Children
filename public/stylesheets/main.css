@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.filter-blue {
+  filter: invert(20%) sepia(96%) saturate(1705%) hue-rotate(218deg) brightness(106%) contrast(98%);
+}
+
+textarea {
+  resize: none;
+}
