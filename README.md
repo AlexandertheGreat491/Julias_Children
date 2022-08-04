@@ -73,7 +73,7 @@ They can also edit, making change to their recipe and even delete the recipe tha
 ### [Alex Van Dyke],[Tran Loi],[Joey Rebne],[Jordan Degerness]
 
 ## License
-###MIT
+### MIT
 
 #### Copyright (c) [2022] [Alex Van Dyke],[Tran Loi],[Joey Rebne] and [Jordan Degerness]
 
