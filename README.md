@@ -10,7 +10,7 @@ As a skilled home chef, having a right recipe for precie materials, a appropriat
 * [Description](#description)
 * [Julia's children forum](#julias-children-forum)
 * [Installation](#installation)
-* [Usage]
+* [Usage](#usage)
     *[As a viewer](#as-a-viewer)
     *[As a member](#as-a-member)
 * [Reference](#references)
@@ -21,10 +21,11 @@ As a skilled home chef, having a right recipe for precie materials, a appropriat
 link
 
 ## Installation
-Follow the above link to forum
+Follow the above link to forum which will lead you to the homepage 
+(image)
 
 ## Usage
-Chefs can find out recipe that can desire them to cook. They can view and pick the recipe they like or join-in, posting their own recipe, discuss and making the dish better with their idea
+Chefs can find out recipe that can desire them to cook. They can [view and pick](#as-a-viewer) the recipe they like or [join-in](#as-a-member), posting their own recipe, discuss and making the dish better with their idea
 
 ### As a viewer
 Chefs can access to any recipe that match their skill and tool that they are practicing
