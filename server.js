@@ -1,12 +1,7 @@
 const path = require('path');
 const express = require('express');
-<<<<<<< HEAD
-//const session = require('express-session');
-//const exphbs = require('express-handlebars');
-=======
 const session = require('express-session');
 const exphbs = require('express-handlebars');
->>>>>>> b00fffbf0dabf53dc6e08f8429ae966dc989d5ec
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,27 +9,15 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require('./config/connection');
 //const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-<<<<<<< HEAD
-//const sess = {
-//secret: 'Super duper secret secret',
-//cookie:{},
-//resave: false,
-//saveUninitialized: true,
-//store: new SequelizeStore({
-//db: sequelize
-//})
-//};
-=======
-const sess = {
-  secret: 'Super duper secret secret',
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-};
->>>>>>> b00fffbf0dabf53dc6e08f8429ae966dc989d5ec
+// const sess = {
+//   secret: 'Super duper secret secret',
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new SequelizeStore({
+//     db: sequelize,
+//   }),
+// };
 
 //app.use(session(sess));
 
@@ -52,12 +35,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(require('./controllers/'));
 
 // turn on connection to db and server
-<<<<<<< HEAD
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`);
-  sequelize.sync({ force: false });
-=======
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
->>>>>>> b00fffbf0dabf53dc6e08f8429ae966dc989d5ec
 });
