@@ -11,9 +11,9 @@
         <img class='w-full h-52 object-cover' src='https://via.placeholder.com/900x300.png?text=Image' />
       </div>
       <div class='border-2 border-blue-700 p-3 w-10/12 mt-5'>
-        <p><b class='text-blue-700'>Prep:</b> {{recipe.prep_time}} </p>
-        <p><b class='text-blue-700'>Cook:</b> {{recipe.cook_time}} </p>
-        <p><b class='text-blue-700'>Total:</b> {{recipe.total_time}}</p>
+        <p><b class='text-blue-700'>Prep:</b> {{recipe.time[0]}} </p>
+        <p><b class='text-blue-700'>Cook:</b> {{recipe.time[1]}} </p>
+        <p><b class='text-blue-700'>Total:</b> {{recipe.time[2]}}</p>
         {{!-- <p><b class='text-blue-700'>Servings:</b> {{recipe.servings}}</p> --}}
       </div>
     </div>
