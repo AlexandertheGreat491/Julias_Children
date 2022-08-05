@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Recipe extends Model {}
 
 //creates the fields/columns for the Post model
 
-Post.init(
+Recipe.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -17,8 +17,8 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    genre: {
-      type: DataTypes.STRING,
+    category: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     ingredients: {
@@ -29,7 +29,11 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    requirements: {
+    time: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    directions: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
@@ -43,11 +47,11 @@ Post.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'recipe',
   }
 );
 
-module.exports = Post;
+module.exports = Recipe;

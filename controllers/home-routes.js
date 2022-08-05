@@ -1,24 +1,25 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+const { User, Comment, Recipe } = require("../models");
 
 //GET route for all posts when logged in from the dashboard
 router.get("/", (req, res) => {
   console.log(req.session);
 
-  Post.findAll({
+  Recipe.findAll({
     attributes: [
       "id",
       "title",
       "ingredients",
       "difficulty",
-      "requirements",
+      "time",
+      "directions",
       "user_id",
     ],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "post_id"],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
           model: User,
           attributes: ["id", "username", "email", "password"],
@@ -65,23 +66,24 @@ router.get("/signup", (req, res) => {
 
 //GET route for posts by id
 router.get("/post/:id", (req, res) => {
-  Post.findOne({
+  Recipe.findOne({
     where: {
       id: req.params.id,
     },
     attributes: [
       "id",
       "title",
-      "genre",
+      "category",
       "ingredients",
       "difficulty",
-      "requirements",
+      "time",
+      "directions",
       "user_id",
     ],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "post_id"],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
           model: User,
           attributes: ["username"],
