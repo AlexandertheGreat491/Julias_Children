@@ -21,7 +21,7 @@ const sequelize = require('./config/connection');
 
 //app.use(session(sess));
 
-//const helpers = require('./utils/helpers);
+//const auth = require('../../utils/auth);
 
 //const hbs = exphbs.create({helpers});
 
