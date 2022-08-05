@@ -3,12 +3,9 @@
 ![Julia'schildren](https://img.shields.io/badge/Project-Julia'%20Children-green)
 ![Skill](https://img.shields.io/badge/Skill%20included-npm%20HTML%20CSS%20JAVA-blue)
 
-## Description
-As a skilled home chef, having a right recipe for precie materials, a appropriate tool to make a top quality dishes is needed. Julia's children is the forum for cookers that they can find recipe that match their skills, also share their unique recipe and knowleged thus anyone on this forum can be a masterchef.
+## Table of Contents
 
-## Table of content
 * [Description](#description)
-* [Julia's children forum](#julias-children-forum)
 * [Installation](#installation)
 * [Usage](#usage)
     * [As a viewer](#as-a-viewer)
@@ -17,11 +14,13 @@ As a skilled home chef, having a right recipe for precie materials, a appropriat
 * [Credit](#credit)
 * [License](#license)
 
-## Julia's children forum
-link
+## Description
+As a skilled home chef, I want to have the right recipe with precise ingredients, and an appropriate tool to make a top quality dishes is needed. Julia's Children is a forum for chefs so that they can find recipes that match their skills, and share their unique recipes and knowledge thus anyone on this forum can be a masterchef.
 
 ## Installation
-Follow the above link to forum which will lead you to the homepage 
+Pleas click the link to get the access to the app: [Julia's Children](https://julias-children.herokuapp.com/).
+If you want to install the application, follow the link to [Public Repository](https://github.com/AlexandertheGreat491/Project-2.git).
+
 (image)
 
 ## Usage
@@ -29,6 +28,8 @@ Chefs can find out recipe that can desire them to cook. They can [view and pick]
 
 ### As a viewer
 Chefs can access to any recipe that match their skill and tool that they are practicing
+(image)
+
 ### As a member
 Chefs need to create an ID (image)
 
