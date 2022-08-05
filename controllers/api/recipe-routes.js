@@ -4,17 +4,18 @@ const { Recipe, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
 const withAuth = require("../../utils/auth");
 
-//GET route for all posts
+//GET route for all recipes
 router.get("/", (req, res) => {
   console.log("======================");
   Recipe.findAll({
     attributes: [
       "id",
       "title",
-      "genre",
+      "category",
       "ingredients",
       "difficulty",
-      "requirements",
+      "time",
+      "directions",
       "user_id",
     ],
     include: [
@@ -39,7 +40,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//GET route for post by id
+//GET route for recipe by id
 router.get("/:id", (req, res) => {
   Recipe.findOne({
     where: {
@@ -82,7 +83,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//POST route for creating a new post
+//POST route for creating a new recipe
 router.post("/", withAuth, (req, res) => {
   Recipe.create({
     title: req.body.title,
@@ -100,7 +101,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-//PUT route to update a post by id
+//PUT route to update a recipe by id
 router.put("/:id", withAuth, (req, res) => {
   Recipe.update(
     {
@@ -128,7 +129,7 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
-//DELETE route to remove a post from the database
+//DELETE route to remove a recipe from the database
 router.delete("/:id", withAuth, (req, res) => {
   Recipe.destroy({
     where: {
