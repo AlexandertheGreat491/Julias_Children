@@ -24,7 +24,7 @@
 
       <div id='ingredients-list'>
 
-        {{#each ingredients as |ingredient|}}
+        {{#each recipe.ingredients as |ingredient|}}
           <div class='flex items-center mt-4'>
             <input type='checkbox' class='h-8 w-8 mr-4' />
             <p>{{ingredient}}</p>
@@ -41,7 +41,7 @@
 
       <div id='directions-list'>
 
-        {{#each directions as |direction|}}
+        {{#each recipe.directions as |direction|}}
           <div class='mt-7'>
             <div class='flex mb-2 items-center'>
               <input type='checkbox' class='h-8 w-8 mr-4' />
