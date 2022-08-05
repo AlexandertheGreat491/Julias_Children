@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+const { Recipe, User, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
-  Post.findAll({
+router.get("/", withAuth, (req, res) => {
+  Recipe.findAll({
     where: {
       //uses the id from the user's session
       user_id: req.session.user_id,

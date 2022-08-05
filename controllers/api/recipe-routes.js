@@ -1,13 +1,13 @@
 //imports the express library, all three models, and the connection logic
 const router = require("express").Router();
-const { Post, User, Comment } = require("../../models");
+const { Recipe, User, Comment } = require("../../models");
 const sequelize = require("../../config/connection");
-
+const withAuth = require("../../utils/auth");
 
 //GET route for all posts
 router.get("/", (req, res) => {
   console.log("======================");
-  Post.findAll({
+  Recipe.findAll({
     attributes: [
       "id",
       "title",
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "post_id"],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
           model: User,
           attributes: ["id", "username", "first_name", "last_name", "email"],
@@ -41,17 +41,18 @@ router.get("/", (req, res) => {
 
 //GET route for post by id
 router.get("/:id", (req, res) => {
-  Post.findOne({
+  Recipe.findOne({
     where: {
       id: req.params.id,
     },
     attributes: [
       "id",
       "title",
-      "genre",
+      "category",
       "ingredients",
       "difficulty",
-      "requirements",
+      "time",
+      "directions",
       "user_id",
     ],
     include: [
@@ -82,13 +83,14 @@ router.get("/:id", (req, res) => {
 });
 
 //POST route for creating a new post
-router.post("/", (req, res) => {
-  Post.create({
+router.post("/", withAuth, (req, res) => {
+  Recipe.create({
     title: req.body.title,
-    genre: req.body.genre,
+    category: req.body.category,
     ingredients: req.body.ingredients,
     difficulty: req.body.difficulty,
-    requirements: req.body.requirements,
+    time: req.body.time,
+    directions: req.body.directions,
     user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
@@ -99,13 +101,13 @@ router.post("/", (req, res) => {
 });
 
 //PUT route to update a post by id
-router.put("/:id", (req, res) => {
-  Post.update(
+router.put("/:id", withAuth, (req, res) => {
+  Recipe.update(
     {
       title: req.body.title,
-      genre: req.body.genre,
+      category: req.body.category,
       ingredients: req.body.ingredients,
-      requirements: req.body.requirements,
+      time: req.body.time,
     },
     {
       where: {
@@ -127,8 +129,8 @@ router.put("/:id", (req, res) => {
 });
 
 //DELETE route to remove a post from the database
-router.delete("/:id", (req, res) => {
-  Post.destroy({
+router.delete("/:id", withAuth, (req, res) => {
+  Recipe.destroy({
     where: {
       id: req.params.id,
     },
