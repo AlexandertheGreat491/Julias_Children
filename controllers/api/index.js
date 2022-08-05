@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 //imports the routes for all three models
 const userRoutes = require('./user-routes');
-const postRoutes = require('./post-routes');
+const postRoutes = require('./recipe-routes');
 const commentRoutes = require('./comment-routes');
 
 
