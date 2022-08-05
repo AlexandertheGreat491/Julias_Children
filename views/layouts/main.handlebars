@@ -1,37 +1,32 @@
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./stylesheets/styles.css" rel="stylesheet" />
-    <title>Recipe Finder</title>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link href='/stylesheets/styles.css' rel='stylesheet' />
+    <title>Julia's Children</title>
   </head>
   <body>
-    <header class="flex justify-between px-5 pt-2">
-      <h1 class="font-bold text-3xl underline">
-        <a href="/">Recipe Finder</a>
+    <header class='flex justify-between px-5 pt-2'>
+      <h1 class='text-blue-500 text-2xl'>
+        <a href='/'>Julia's Children</a>
       </h1>
-      <nav class="flex space-x-2">
-        <button
-          class="bg-green-900 py-2 px-5 text-white font-bold rounded-sm"
-        >login</button>
-        <button
-          id="logout"
-          class="bg-green-900 py-2 px-5 text-white font-bold"
-        >logout</button>
+      <nav class='flex space-x-2'>
+        <button id='login'>login</button>
+        <button id='logout'>logout</button>
       </nav>
     </header>
     <main>
-      {{body}}
+      {{{body}}}
     </main>
-    <footer class="flex justify-evenly px-5">
-      <h1 class="font-bold">
-        Recipe Finder
+    <footer class='flex justify-evenly px-5 inset-x-0 text-center mt-10'>
+      <h1 class='font-bold'>
+        Julia's Children
       </h1>
     </footer>
 
     {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
+      <script src='/javascript/logout.js'></script>
     {{/if}}
   </body>
 </html>

@@ -8,7 +8,7 @@ const commentRoutes = require('./comment-routes');
 
 //directs the models and routes to work together
 router.use('/users', userRoutes);
-router.use('/posts', recipeRoutes);
+router.use('/recipes', recipeRoutes);
 router.use('/comments', commentRoutes);
 
 module.exports = router;

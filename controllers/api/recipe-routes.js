@@ -1,89 +1,72 @@
 //imports the express library, all three models, and the connection logic
-const router = require("express").Router();
-const { Recipe, User, Comment } = require("../../models");
-const sequelize = require("../../config/connection");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const { Recipe, User, Comment } = require('../../models');
+const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 //GET route for all posts
-router.get("/", (req, res) => {
-  console.log("======================");
+router.get('/', (req, res) => {
+  console.log('======================');
   Recipe.findAll({
-    attributes: [
-      "id",
-      "title",
-      "genre",
-      "ingredients",
-      "difficulty",
-      "requirements",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["id", "username", "first_name", "last_name", "email"],
+          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
         },
       },
       {
         model: User,
-        attributes: ["id", "username", "first_name", "last_name", "email"],
+        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
       },
     ],
   })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //GET route for post by id
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "title",
-      "category",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: User,
-        attributes: ["id", "username", "first_name", "last_name", "email"],
+        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
       },
       {
         model: Comment,
         include: {
           model: User,
-          attributes: ["id", "username", "first_name", "last_name", "email"],
+          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
         },
       },
     ],
   })
-    .then((dbPostData) => {
+    .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: 'No post found with this id!' });
         return;
       }
       res.json(dbPostData);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //POST route for creating a new post
-router.post("/", withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Recipe.create({
     title: req.body.title,
     category: req.body.category,
@@ -93,15 +76,15 @@ router.post("/", withAuth, (req, res) => {
     directions: req.body.directions,
     user_id: req.session.user_id,
   })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //PUT route to update a post by id
-router.put("/:id", withAuth, (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Recipe.update(
     {
       title: req.body.title,
@@ -115,34 +98,34 @@ router.put("/:id", withAuth, (req, res) => {
       },
     }
   )
-    .then((dbPostData) => {
+    .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: 'No post found with this id!' });
         return;
       }
       res.json(dbPostData);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //DELETE route to remove a post from the database
-router.delete("/:id", withAuth, (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Recipe.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then((dbPostData) => {
+    .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: 'No post found with this id!' });
         return;
       }
       res.json(dbPostData);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });

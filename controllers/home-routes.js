@@ -1,112 +1,110 @@
-const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { User, Comment, Recipe } = require("../models");
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { User, Comment, Recipe } = require('../models');
 
 //GET route for all posts when logged in from the dashboard
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   console.log(req.session);
 
   Recipe.findAll({
-    attributes: [
-      "id",
-      "title",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["id", "username", "email", "password"],
+          attributes: ['id', 'username', 'email', 'password'],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ['username'],
       },
     ],
   })
-    .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render("homepage", {
-        posts,
+    .then(dbRecipeData => {
+      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+      res.render('homepage', {
+        recipes,
         loggedIn: req.session.loggedIn,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //login route
-router.get("/login", (req, res) => {
+router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect('/');
     return;
   }
 
-  res.render("login");
+  res.render('login');
 });
 
 //signup route
-router.get("/signup", (req, res) => {
+router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect('/');
     return;
   }
 
-  res.render("signup");
+  res.render('signup');
 });
 
 //GET route for posts by id
-router.get("/post/:id", (req, res) => {
+router.get('/recipe/:id', (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "title",
-      "category",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
+      },
+      {
+        model: User,
+        attributes: ['username'],
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
-        res.status(404).json({ message: "No post found with this id!" });
+    .then(dbRecipeData => {
+      if (!dbRecipeData) {
+        res.status(404).json({ message: 'No recipe found with this id!' });
         return;
       }
 
       //serializes the data
-      const post = dbPostData.get({ plain: true });
+      const recipe = dbRecipeData.get({ plain: true });
+      // console.log(recipe);
+
+      const time = recipe.time.split(',');
+      // console.log(time);
+
+      const ingredients = recipe.ingredients.split(',');
+
+      const directions = recipe.directions.split(',');
 
       //passes the data to the template
-      res.render("single-post", {
-        post,
-        loggedIn: req.session.loggedIn,
+      res.render('single-recipe', {
+        recipe,
+        time,
+        ingredients,
+        directions,
+        // loggedIn: req.session.loggedIn,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
