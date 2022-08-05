@@ -17,7 +17,7 @@ const recipedata = [
     ingredients:
       '1-3/4 cups all-purpose flour, 1-1/2 cups sugar, 1 teaspoon baking soda, 1/2 teaspoon salt, 2 large eggs, room temperature, 2 medium ripe bananas, mashed (1 cup), 1/2 cup canola oil, 1/4 cup plus 1 tablespoon buttermilk, 1 teaspoon vanilla extract, 1 cup chopped walnuts',
     difficulty: 'medium',
-    time: 'Prep: 15 minutes, Cook: 1-1/4 hours, Total: 1-1/2 hours',
+    time: 'Prep: 15 minutes, Cook: 1 hour 15 minutes, Total: 1 hour 30 minutes',
     directions: 'Cook in a medium sized bread pan.',
     user_id: 8,
   },
@@ -37,7 +37,7 @@ const recipedata = [
     ingredients:
       "3/4 cup butter softened, 2-1/2 cups sugar, 3 large eggs, 1 can(15 ounces) solid-pack pumpkin, 2-1/3 cups all-purpose flour, 1 tablespoon pumpkin pie spice, 1 teaspoon baking powder, 1 teaspoon ground cinnamon, 3/4 teaspoon salt, 1/2 teaspoon baking soda, 1/2 teaspoon ground ginger, 1 cup buttermilk, Frosting:, 1 package (8 ounces) cream cheese, softened, 4 cups confectioners' sugar, 1 teaspoon vanilla extract, 2 teaspoons ground cinnamon",
     difficulty: 'hard',
-    time: 'Prep time: 25 minutes, Cook time: 20 minutes, Total time: 45 minutes',
+    time: 'Prep: 25 minutes, Cook: 20 minutes, Total: 45 minutes',
     directions: 'Bake and then frost',
     user_id: 4,
   },
@@ -57,7 +57,7 @@ const recipedata = [
     ingredients:
       'Dough for double-crust pie, 1/3 cup sugar, 1/3 cup packed brown sugar, 1/4 cup all-purpose flour, 1 teaspoon ground cinnamon, 1/4 teaspoon ground nutmeg, 6 to 7 cups thinly sliced peeled tart apples, 1 tablespoon lemon juice, 1 tablespoon butter, 1 large egg white, Optional: Turbinado or coarse sugar, ground cinnamon, vanilla bean ice cream, and caramel sauce',
     difficulty: 'hard',
-    time: 'Prep: 20 minutes, Cook: 45 minutes, Total: 65 minutes',
+    time: 'Prep: 20 minutes, Cook: 45 minutes, Total: 1 hour 5 minutes',
     directions: 'Cook in a pan',
     user_id: 4,
   },
@@ -67,7 +67,7 @@ const recipedata = [
     ingredients:
       '1 pound ground beef, 3/4 pound bulk pork sausage, 3 cans(8 ounces each) tomato sauce, 2 cans (6 ounces each) tomato paste, 2 garlic cloves minced, 2 teaspons sugar, 1 teaspoon Italian seasoning, 1/2 to 1 teaspoon salt, 1/4 to 1/2 teaspoon pepper, 3 large eggs, 3 tablespoons minced fresh parsely, 3 cups 4% small-curd cottage cheese, 1 cup ricotta cheese, 1/2 cup grated Parmesean cheese, 9 lasagna noodles cooked and drained, 6 slices Beliogioso Provolone Cheese (about 6 ounces), 3 cups shredded part-skim mozzarella cheese divided',
     difficulty: 'hard',
-    time: 'Prep: 30 minutes, Cook: 70 minutes, Total: 100 minutes',
+    time: 'Prep: 30 minutes, Cook: 1 hour 10 minutes, Total: 1 hour 40 minutes',
     directions: 'Cook in a big pan',
     user_id: 1,
   },
@@ -127,7 +127,8 @@ const recipedata = [
     ingredients: '2/3 cup butter softened, 1 cup sugar, 3 large eggs room temperature, 1-2/3 cups 2% milk, 2-1/3 all-purpose flour, 1 cup cornmeal, 4-1/2 teaspoons baking powder, 1 teaspoon salt',
     difficulty: 'medium',
     time: 'Prep: 10 minutes, Cook: 20 minutes, Total: 30 minutes',
-    directions: 'Preheat oven to 400°. In a large bowl, cream butter and sugar until light and fluffy, 5-7 minutes. Combine eggs and milk. Combine flour, cornmeal, baking powder and salt; add to creamed mixture alternately with egg mixture. Pour into a greased 13x9-in. baking pan. Bake 22-27 minutes or until a toothpick inserted in center comes out clean. Cut into squares; serve warm.',
+    directions:
+      'Preheat oven to 400°. In a large bowl, cream butter and sugar until light and fluffy, 5-7 minutes. Combine eggs and milk. Combine flour, cornmeal, baking powder and salt; add to creamed mixture alternately with egg mixture. Pour into a greased 13x9-in. baking pan. Bake 22-27 minutes or until a toothpick inserted in center comes out clean. Cut into squares; serve warm.',
     user_id: 4,
   },
   {

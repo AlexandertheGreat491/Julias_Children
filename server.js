@@ -19,7 +19,7 @@ const sess = {
   }),
 };
 
-//app.use(session(sess));
+app.use(session(sess));
 
 //const auth = require('../../utils/auth);
 
