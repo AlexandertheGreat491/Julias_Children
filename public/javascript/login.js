@@ -1,8 +1,8 @@
 async function loginFormHandler(event) {
     event.preventDefault();
 
-    const email = document.querySelector()// email field ID here
-    const password = document.querySelector()// password field ID here
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
         const response = await fetch('api/users/login', {
@@ -25,22 +25,25 @@ async function loginFormHandler(event) {
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector()// username signup field here
-    const email = document.querySelector() // email signup field here
-    const password = document.querySelector() // password signup field here
+    const firstName = document.querySelector('#first_name').value.trim();
+    const lastName = document.querySelector('#last_name').value.trim();
+    const email = document.querySelector('#user_email').value.trim();
+    const password = document.querySelector('#user_password').value.trim();
+    const confirmPassword = document.querySelector('#confirm_password').value.trim();
 
-    if (username && email && password) {
+    if (firstName && lastName && email && password && confirmPassword) {
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
-                username,
+                firstName,
+                lastName,
                 email,
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
         });
-
-        document.querySelector('loginformgoeshere').addEventListener('submit', loginFormHandler);
-        document.querySelector('signupformgoeshere').addEventListener('submit', signupFormHandler);
     }
-}
+};
+
+document.querySelector("login-container").addEventListener('submit', loginFormHandler);
+document.querySelector("signup-container").addEventListener('submit', signupFormHandler);
