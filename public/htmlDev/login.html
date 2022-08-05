@@ -1,0 +1,73 @@
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <link href='../stylesheets/styles.css' rel="stylesheet" />
+  <title>Login/Signup</title>
+</head>
+
+<body>
+  <header class="flex justify-between px-5 pt-2">
+    <h1 class="text-blue-500 text-xl font-bold">
+      Julia's Children
+    </h1>
+    <nav class="flex space-x-2">
+      <button>login</button>
+      <button>logout</button>
+    </nav>
+  </header>
+  <!-- Header for main.handlebars //// not needed in login view -->
+  <main>
+    <!-- {{body}} -->
+    <section>
+      <div
+        class="w-10/12 mx-auto mt-24 flex flex-wrap md:flex-nowrap text-center md:max-w-xl justify-center items-center">
+
+        <div id="login-container" class="sm:w-1/2 w-11/12">
+          <h2 class="text-2xl font-bold text-blue-600">Login</h2>
+          <form id="login">
+            <input type="email" name="user_email" placeholder="Email" class='w-2/3 border-2 border-blue-300 p-1 my-2'>
+            <input type="password" name="user_password" placeholder="Password"
+              class="w-2/3 border-2 border-blue-300 p-1 my-2">
+            <button
+              class="px-2 py-1 bg-blue-300 rounded-md text-blue-900 mt-2 font-semibold border-2 border-blue-800 block mx-auto">
+              Login </button>
+          </form>
+        </div>
+
+        <hr class="border-1 w-3/4 border-blue-300 mx-auto my-10 sm:hidden">
+
+
+        <div id="logout-container" class="sm:w-1/2 w-11/12">
+          <h2 class="text-2xl font-bold text-blue-600">Signup</h2>
+          <form id="logout">
+            <input type="text" id="first_name" name="first_name" placeholder="First Name"
+              class='w-2/3 border-2 border-blue-300 rounded-sm p-1 my-2'>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name"
+              class="w-2/3 border-2 border-blue-300 p-1 my-2">
+            <input type="email" id="user_email" name="user_email" placeholder="Email"
+              class='w-2/3 border-2 border-blue-300 p-1 my-2'>
+            <input type="password" id="user_password" name="user_password" placeholder="Password"
+              class="w-2/3 border-2 border-blue-300 p-1 my-2">
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"
+              class="w-2/3 border-2 border-blue-300 p-1 my-2">
+            <button
+              class="px-2 py-1 bg-blue-300 rounded-md text-blue-800 mt-2 font-semibold border-2 border-blue-800 block mx-auto">
+              Signup </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+    <!-- End body -->
+  </main>
+  <footer class="flex justify-evenly px-5 inset-x-0 text-center mt-10">
+    <h1 class="font-bold">
+      Julia's Children
+    </h1>
+  </footer>
+</body>
+
+</html>
