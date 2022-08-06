@@ -115,7 +115,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-//logout route
+//logout route for the user
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
