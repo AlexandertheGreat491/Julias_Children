@@ -7,13 +7,13 @@
     <div id="user-recipes"
         class="grid grid-cols-1 justify-center gap-5 w-full sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         <!-- Recipe Card Partial to be looped-->
-        <ol>
+        
             {{#each recipes as |recipe|}}
-            <li>
-                {{recipe-card recipe}}
-            </li>
+        
+                {{>recipe-card recipe}}
+            
             {{/each}}
-        </ol>
+        
         <!-- Recipe Card Partial End-->
     </div>
     {{/if}}
