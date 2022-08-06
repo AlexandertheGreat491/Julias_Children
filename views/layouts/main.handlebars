@@ -12,8 +12,12 @@
         <a href='/'>Julia's Children</a>
       </h1>
       <nav class='flex space-x-2'>
-        <button id='login'>login</button>
+        {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
         <button id='logout'>logout</button>
+        {{else}}
+        <button href="/login" id='login'>login</button>
+        {{/if}}
       </nav>
     </header>
     <main>
