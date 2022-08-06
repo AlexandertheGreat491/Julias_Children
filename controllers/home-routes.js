@@ -31,10 +31,10 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
+    .then((dbRecipeData) => {
+      const posts = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
       res.render("homepage", {
-        posts,
+        recipes,
         loggedIn: req.session.loggedIn,
       });
     })
@@ -64,8 +64,8 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-//GET route for posts by id
-router.get("/post/:id", (req, res) => {
+//GET route for recipes by id
+router.get("/recipe/:id", (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id,
@@ -91,18 +91,18 @@ router.get("/post/:id", (req, res) => {
       },
     ],
   })
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbRecipeData) => {
+      if (!dbRecipeData) {
         res.status(404).json({ message: "No post found with this id!" });
         return;
       }
 
       //serializes the data
-      const post = dbPostData.get({ plain: true });
+      const post = dbRecipeData.get({ plain: true });
 
       //passes the data to the template
-      res.render("single-post", {
-        post,
+      res.render("single-recipe", {
+        recipe,
         loggedIn: req.session.loggedIn,
       });
     })
