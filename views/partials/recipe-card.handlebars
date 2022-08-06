@@ -1,9 +1,14 @@
-<div id='recipe-{{this.id}}' class='recipe-card flex flex-col h-64'>
-  <div class='recipe-card-image'>
-    <img class='w-full h-52 object-cover' src='{{this.image}}' />
+<div id="recipe-{{this.id}}" class="recipe-card flex flex-col h-64">
+  <div class="recipe-card-image relative w-full">
+    <img class="w-full h-52 object-cover" src="{{this.image}}" />
+    <a>
+      <img
+        src="../images/svg/three-dots.svg"
+        class="h-10 w-auto absolute top-2 right-5 filter-blue"/>
+    </a>
   </div>
-  <div class='recipe-card-info w-11/12 p-3 bg-blue-300 -mt-20 mx-auto'>
-    <h2 class='font-bold'>{{this.title}}</h2>
+  <div class="recipe-card-info w-11/12 p-3 bg-blue-300 -mt-20 mx-auto">
+    <h2 class="font-bold">{{this.title}}</h2>
     <p>{{this.description}}</p>
   </div>
 </div>
