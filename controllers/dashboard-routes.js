@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { response } = require("express");
 const sequelize = require("../config/connection");
 const { Recipe, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
@@ -34,15 +35,19 @@ router.get("/", withAuth, (req, res) => {
       },
     ],
   })
-  .then((dbRecipeData) => {
-    //serializes the data prior to passing to the template
-    const recipes = dbRecipeData.map((recipe) => recipe.get({plain: true}));
-    res.render('dashboard', {recipes, loggedIn: true});
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then((dbRecipeData) => {
+      //serializes the data prior to passing to the template
+      const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
+      res.render("dashboard", { recipes, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-module.exports = router; 
+router.get("/add-recipe", withAuth, (req, res) => {
+  res.render("add-recipe");
+});
+
+module.exports = router;
