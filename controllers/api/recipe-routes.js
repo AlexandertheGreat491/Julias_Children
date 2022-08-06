@@ -1,8 +1,8 @@
 //imports the express library, all three models, and the connection logic
-const router = require("express").Router();
-const { Recipe, User, Comment } = require("../../models");
-const sequelize = require("../../config/connection");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const { Recipe, User, Comment } = require('../../models');
+const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 //GET route for all recipes
 router.get("/", (req, res) => {
@@ -22,15 +22,15 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["id", "username", "first_name", "last_name", "email"],
+          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
         },
       },
       {
         model: User,
-        attributes: ["id", "username", "first_name", "last_name", "email"],
+        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
       },
     ],
   })
@@ -61,25 +61,25 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["id", "username", "first_name", "last_name", "email"],
+        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
       },
       {
         model: Comment,
         include: {
           model: User,
-          attributes: ["id", "username", "first_name", "last_name", "email"],
+          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
         },
       },
     ],
   })
     .then((dbRecipeData) => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No recipe found with this id!" });
         return;
       }
       res.json(dbRecipeData);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -120,12 +120,12 @@ router.put("/:id", withAuth, (req, res) => {
   )
     .then((dbRecipeData) => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No recipe found with this id!" });
         return;
       }
       res.json(dbRecipeData);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -140,12 +140,12 @@ router.delete("/:id", withAuth, (req, res) => {
   })
     .then((dbRecipeData) => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No recipe found with this id!" });
         return;
       }
       res.json(dbRecipeData);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });

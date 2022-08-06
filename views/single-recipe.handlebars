@@ -1,0 +1,59 @@
+<section class='mt-10 px-5 flex flex-wrap w-11/12 mx-auto sm:max-w-md'>
+  <div id='page-header' class='mb-5'>
+    <h1 class='font-bold text-2xl'>{{recipe.title}}</h1>
+    <p>{{recipe.description}}</p>
+  </div>
+  <div class='mx-auto mt-5 flex flex-wrap mb-6'>
+
+    <!-- Basic info -->
+    <div class='flex flex-wrap justify-center'>
+      <div class='recipe-image'>
+        <img class='w-full h-52 object-cover' src='https://via.placeholder.com/900x300.png?text=Image' />
+      </div>
+      <div class='border-2 border-blue-700 p-3 w-10/12 mt-5'>
+        {{#each time as |time|}}
+          <p><b class='text-blue-700'> {{time}} </b> </p>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- List Ingredients -->
+    <div class='flex flex-wrap mt-8'>
+      <h2 class='font-bold text-xl w-full'>Ingredients</h2>
+
+      <div id='ingredients-list'>
+
+        {{#each ingredients as |ingredient|}}
+          <div class='flex items-center mt-4'>
+            <input type='checkbox' class='h-8 w-8 mr-4' />
+            <p>{{ingredient}}</p>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <hr class='border-1 w-full border-slate-500 mx-auto my-10' />
+
+    <!-- Directions -->
+    <div class='flex flex-wrap'>
+      <h2 class='font-bold text-xl w-full'>Directions</h2>
+
+      <div id='directions-list'>
+
+        {{#each directions as |direction|}}
+          <div class='mt-7'>
+            <div class='flex mb-2 items-center'>
+              <input type='checkbox' class='h-8 w-8 mr-4' />
+              <p>
+                <b>Step {{math @index '+' 1}}:</b>
+              </p>
+            </div>
+            <p>{{direction}}</p>
+          </div>
+        {{/each}}
+
+      </div>
+    </div>
+
+  </div>
+</section>

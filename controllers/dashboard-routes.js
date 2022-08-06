@@ -36,7 +36,7 @@ router.get("/", withAuth, (req, res) => {
   })
   .then((dbRecipeData) => {
     //serializes the data prior to passing to the template
-    const posts = dbRecipeData.map((post) => post.get({plain: true}));
+    const recipes = dbRecipeData.map((recipe) => recipe.get({plain: true}));
     res.render('dashboard', {recipes, loggedIn: true});
   })
   .catch((err) => {

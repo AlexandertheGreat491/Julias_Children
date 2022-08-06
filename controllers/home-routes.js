@@ -1,9 +1,9 @@
-const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { User, Comment, Recipe } = require("../models");
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { User, Comment, Recipe } = require('../models');
 
 //GET route for all posts when logged in from the dashboard
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   console.log(req.session);
 
   Recipe.findAll({
@@ -20,15 +20,15 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["id", "username", "email", "password"],
+          attributes: ['id', 'username', 'email', 'password'],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ['username'],
       },
     ],
   })
@@ -39,30 +39,30 @@ router.get("/", (req, res) => {
         loggedIn: req.session.loggedIn,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //login route
-router.get("/login", (req, res) => {
+router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect('/');
     return;
   }
 
-  res.render("login");
+  res.render('login');
 });
 
 //signup route
-router.get("/signup", (req, res) => {
+router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect('/');
     return;
   }
 
-  res.render("signup");
+  res.render('signup');
 });
 
 //GET route for recipes by id
@@ -85,30 +85,45 @@ router.get("/recipe/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
+      },
+      {
+        model: User,
+        attributes: ['username'],
       },
     ],
   })
     .then((dbRecipeData) => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No post found with this id!" });
+        res.status(404).json({ message: "No recipe found with this id!" });
         return;
       }
 
       //serializes the data
-      const post = dbRecipeData.get({ plain: true });
+      const recipe = dbRecipeData.get({ plain: true });
+      // console.log(recipe);
+
+      const time = recipe.time.split(',');
+      // console.log(time);
+
+      const ingredients = recipe.ingredients.split(',');
+
+      const directions = recipe.directions.split(',');
 
       //passes the data to the template
-      res.render("single-recipe", {
+      res.render('single-recipe', {
         recipe,
-        loggedIn: req.session.loggedIn,
+        time,
+        ingredients,
+        directions,
+        // loggedIn: req.session.loggedIn,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
