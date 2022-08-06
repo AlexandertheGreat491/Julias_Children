@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Post, Comment } = require("../../models");
+const { User, Recipe, Comment } = require("../../models");
 
 //GET route for all users
 router.get("/", (req, res) => {
@@ -26,22 +26,24 @@ router.get("/:id", (req, res) => {
     },
     include: [
       {
-        model: Post,
+        model: Recipe,
         attributes: [
           "id",
           "title",
-          "genre",
+          "description",
+          "category",
           "ingredients",
           "difficulty",
-          "requirements",
+          "time",
+          "directions",
           "user_id",
         ],
       },
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "post_id"],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
-          model: Post,
+          model: Recipe,
           attributes: ["title"],
         },
       },
@@ -64,6 +66,8 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password,
   })
@@ -111,8 +115,20 @@ router.post("/login", (req, res) => {
   });
 });
 
+//logout route for the user
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
 //PUT route to update users by id
-router.get("/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {

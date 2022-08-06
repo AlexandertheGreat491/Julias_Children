@@ -1,46 +1,46 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+const { Recipe, User, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
-  Post.findAll({
+router.get('/', withAuth, (req, res) => {
+  console.log(req.session.user_id);
+  Recipe.findAll({
     where: {
       //uses the id from the user's session
       user_id: req.session.user_id,
     },
-    attributes: [
-      "id",
-      "title",
-      "genre",
-      "ingredients",
-      "difficulty",
-      "requirements",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'user_id'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "post_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ['username'],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ['username'],
       },
     ],
   })
-  .then((dbPostData) => {
-    //serializes the data prior to passing to the template
-    const posts = dbPostData.map((post) => post.get({plain: true}));
-    res.render('dashboard', {posts, loggedIn: true});
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then((dbRecipeData) => {
+      //serializes the data prior to passing to the template
+      const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
+      res.render("dashboard", { recipes, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-module.exports = router; 
+
+//will render the add-recipe page
+router.get("/add-recipe", withAuth, (req, res) => {
+  res.render("add-recipe");
+});
+
+module.exports = router;
