@@ -30,6 +30,7 @@ router.get("/:id", (req, res) => {
         attributes: [
           "id",
           "title",
+          "description",
           "category",
           "ingredients",
           "difficulty",

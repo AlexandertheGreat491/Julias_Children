@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
     attributes: [
       "id",
       "title",
+      "description",
       "ingredients",
       "difficulty",
       "time",
@@ -73,6 +74,7 @@ router.get("/recipe/:id", (req, res) => {
     attributes: [
       "id",
       "title",
+      "description",
       "category",
       "ingredients",
       "difficulty",

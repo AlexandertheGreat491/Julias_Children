@@ -3,6 +3,7 @@ const { Recipe } = require('../models');
 const recipedata = [
   {
     title: 'Creamy White Chili',
+    description: 'A family chili recipe that I learned from my grandfather.',
     category: 'lunch',
     ingredients:
       '1 pound boneless skinless chicken breasts, cut into 1/2-inch cubes, 1 medium chopped onion, 1-1/2 teaspoons garlic powder, 1 tablesoon canola oil, 2 cans (15 ounces each) great northern beans, rinsed and drained, 1 can (14-1/2 ounces each chopped green chiles, 1 teaspoon salt, 1 teaspoon ground cumin, 1 teaspoon dried oregano, 1/2 teaspoon pepper, 1/4 teaspoon cayenne pepper, 1 cup sour cream, 1/2 cup heavy whipping cream, optional: Torilla chps, shredded cheddar cheese, sliced seeded jalapeno pepper',
@@ -13,6 +14,7 @@ const recipedata = [
   },
   {
     title: 'Best Ever Banana Bread',
+    description: 'Best banana bread ever!',
     category: 'breakfast',
     ingredients:
       '1-3/4 cups all-purpose flour, 1-1/2 cups sugar, 1 teaspoon baking soda, 1/2 teaspoon salt, 2 large eggs, room temperature, 2 medium ripe bananas, mashed (1 cup), 1/2 cup canola oil, 1/4 cup plus 1 tablespoon buttermilk, 1 teaspoon vanilla extract, 1 cup chopped walnuts',
@@ -23,6 +25,7 @@ const recipedata = [
   },
   {
     title: 'Amish Breakfast Casserole',
+    description: 'An Amish dish common to the midwest.',
     category: 'dinner',
     ingredients:
       '1 pound sliced bacon, diced, 1 medium sweet onion, chopped, 6 large eggs, lightly beaten, 4 cups frozen shredded hash brown potatoes thawed, 2 cups shredded cheddar cheese, 1-1/2 cups 4% cottage cheese, 1-1/4 shredded Swiss cheese',
@@ -33,6 +36,7 @@ const recipedata = [
   },
   {
     title: 'Pumpkin Spice Cupcakes with Cream Cheese Frosting',
+    description: 'These cupcakes will set the tone for any gathering.',
     category: 'dessert',
     ingredients:
       "3/4 cup butter softened, 2-1/2 cups sugar, 3 large eggs, 1 can(15 ounces) solid-pack pumpkin, 2-1/3 cups all-purpose flour, 1 tablespoon pumpkin pie spice, 1 teaspoon baking powder, 1 teaspoon ground cinnamon, 3/4 teaspoon salt, 1/2 teaspoon baking soda, 1/2 teaspoon ground ginger, 1 cup buttermilk, Frosting:, 1 package (8 ounces) cream cheese, softened, 4 cups confectioners' sugar, 1 teaspoon vanilla extract, 2 teaspoons ground cinnamon",
@@ -43,6 +47,7 @@ const recipedata = [
   },
   {
     title: 'Flavorful Chicken Fajitas',
+    description: 'These fajitas will make the perfect snack on a summer day.',
     category: 'snack',
     ingredients:
       '4 tablespoons canola oil divided, 2 tablespoons lemon juice, 1-1/2 teaspoons seasoned salt, 1-1/2 dried oregano, 1-1/2 teaspoons ground cumin, 1 teaspoon garlic powder, 1/2 teaspoon chili powder, 1/2 teaspoon paprika, 1/2 teaspoon crushed red pepper flakes, 1-1/2 pounds boneless skinless chicken breasts cut into thin stips, 1/2 medium sweet red pepper julienned, 1/2 medium green pepper julienned, 4 green onions, thinly sliced, 1/2 cup chopped onion, 6 flour tortillas(8 inches) warmed, Optional: shredded cheddar cheese taco sauce salsa guacamole sliced red onions and sour cream',
@@ -53,6 +58,7 @@ const recipedata = [
   },
   {
     title: 'Apple Pie',
+    description: 'As American as you can get.',
     category: 'dessert',
     ingredients:
       'Dough for double-crust pie, 1/3 cup sugar, 1/3 cup packed brown sugar, 1/4 cup all-purpose flour, 1 teaspoon ground cinnamon, 1/4 teaspoon ground nutmeg, 6 to 7 cups thinly sliced peeled tart apples, 1 tablespoon lemon juice, 1 tablespoon butter, 1 large egg white, Optional: Turbinado or coarse sugar, ground cinnamon, vanilla bean ice cream, and caramel sauce',
@@ -63,6 +69,7 @@ const recipedata = [
   },
   {
     title: 'Traditional Lasagna',
+    description: 'This recipe will make great leftovers for days.',
     category: 'dinner',
     ingredients:
       '1 pound ground beef, 3/4 pound bulk pork sausage, 3 cans(8 ounces each) tomato sauce, 2 cans (6 ounces each) tomato paste, 2 garlic cloves minced, 2 teaspons sugar, 1 teaspoon Italian seasoning, 1/2 to 1 teaspoon salt, 1/4 to 1/2 teaspoon pepper, 3 large eggs, 3 tablespoons minced fresh parsely, 3 cups 4% small-curd cottage cheese, 1 cup ricotta cheese, 1/2 cup grated Parmesean cheese, 9 lasagna noodles cooked and drained, 6 slices Beliogioso Provolone Cheese (about 6 ounces), 3 cups shredded part-skim mozzarella cheese divided',
@@ -73,6 +80,7 @@ const recipedata = [
   },
   {
     title: "Li'l Cheddar Meat Loaves",
+    description: 'If you do not like meatloaf this will change your mind!',
     category: 'dinner',
     ingredients:
       '1 large egg, 3/4 cup whole milk, 1 cup shredded cheddar cheese, 1/2 quick-cooking oats, 1/2 cup quick-cooking oats, 1/2 cup chopped onion, 1/2 teaspoon salt, 1 pound ground beef, 2/3 cup ketchup, 1/2 cup packed brown sugar, 1-1/2 teaspoons prepared mustard',
@@ -83,6 +91,7 @@ const recipedata = [
   },
   {
     title: 'Rustic Italian Tortellini Soup',
+    description: 'Great soup for a fall day.',
     category: 'dinner',
     ingredients:
       '3/4 pound Italian turkey sausage links, casings removed, 1 medium onion, chopped, 6 garlic cloves, minced, 2 cans (14-1/2 ounces each) reduced-sodium chicken broth, 1-3/4 cups water, 1 can (14-1/2 ounces) diced tomatoes, undrained, 1 package (9 ounces) refrigerated cheese tortellini, 1 package (6 ounces) fresh baby spinach, coasrsely chopped, 2-1/4 teaspoons minced fresh basil or 3/4 teaspoon dried basil, 1/4 teaspoon pepper, dash crushed red pepper flakes, shredded parmesean cheese, optional',
@@ -93,6 +102,7 @@ const recipedata = [
   },
   {
     title: 'Fluffy Key Lime Pie',
+    description: 'A great dessert for any family gathering.',
     category: 'dessert',
     ingredients:
       '1/4 cup boiling water, 1 package (0.3 ounce) sugar-free lime gelatin, 2 cartons (6 ounces each) Key lime yogurt, 1 carton (8 ounces) frozen fat-free whipped topping thawed, 1 reduced-fat graham cracker crust(9 inches)',
@@ -103,6 +113,7 @@ const recipedata = [
   },
   {
     title: 'Pineapple Orange Cake',
+    description: 'A great dessert for any family gathering.',
     category: 'dessert',
     ingredients:
       '1 package yellow cake mix(regular size), 1 can (11 ounces) mandarin oranges undrained, 4 large egg whites, 1/2 cup unsweetened applesauce, Topping: 1 can(20 ounces) crushed pineapple undrained, 1 package (1 ounce) sugar free instant vanilla pudding mix, 1 carton (8 ounces) reduced-fat whipped topping',
@@ -113,6 +124,7 @@ const recipedata = [
   },
   {
     title: 'Baked Spaghetti',
+    description: 'The best spaghetti for any lunch.',
     category: 'lunch',
     ingredients:
       '1 cup chopped onion, 1 cup chopped green pepper, 1 tablespoon butter, 1 can(28 ounces) diced tomatoes undrained, 1 can (4 ounces) mushroom stems and pieces drained, 1 can (2-1/4 ounces) sliced ripe olives drained, 2 teaspoons dried oregano, 1 pound ground beef, browned and drained, optional, 12 ounces spaghetti cooked and drained, 2 cups shredded cheddar cheese, 1 can (10-3/4 ounces) condensed cream of mushroom soup undiluted, 1/4 cup water, 1/4 cup grated parmesean cheese',
@@ -123,6 +135,7 @@ const recipedata = [
   },
   {
     title: 'Buttery Cornbread',
+    description: 'This cornbread goes well with chili',
     category: 'snack',
     ingredients: '2/3 cup butter softened, 1 cup sugar, 3 large eggs room temperature, 1-2/3 cups 2% milk, 2-1/3 all-purpose flour, 1 cup cornmeal, 4-1/2 teaspoons baking powder, 1 teaspoon salt',
     difficulty: 'medium',
@@ -133,6 +146,7 @@ const recipedata = [
   },
   {
     title: "Sandy's Chocolate Cake",
+    description: "Chocolate heaven",
     category: 'dessert',
     ingredients:
       '1 cup butter softened, 3 cups packed brown sugar, 4 large eggs room temperature, 2 teaspoons vanilla extract, 2-2/3 cups all-purpose flour, 3/4 cup baking cocoa, 3 teaspoons baking soda, 1/2 teaspoon salt, 1-1/3 cups sour cream, 1-1/3 cups boiling water',
@@ -143,6 +157,7 @@ const recipedata = [
   },
   {
     title: 'Macaroni Coleslaw',
+    description: 'A great coleslaw to bring to a cook out.',
     category: 'dinner',
     ingredients:
       '1 package (7 ounces) ring macaroni or ditalini, 1 package (14 ounces) coleslaw mix, 2 medium onions finely chopped, 2 celery ribs finely chopped, 1 medium cucumber finely chopped, 1 medium green pepper, finely chopped, 1 can (8 ounces) whole water chestnuts drained and chopped, Dressing: 1-1/2 cups Miracle Whip Light, 1/3 cup sugar, 1/4 cup cider vinegar, 1/2 teaspoon salt, 1/4 teaspoon pepper ',

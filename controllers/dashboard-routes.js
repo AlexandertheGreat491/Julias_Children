@@ -12,10 +12,11 @@ router.get("/", withAuth, (req, res) => {
     attributes: [
       "id",
       "title",
-      "genre",
+      "description",
+      "category",
       "ingredients",
       "difficulty",
-      "requirements",
+      "time",
       "user_id",
     ],
     include: [
