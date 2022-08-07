@@ -5,67 +5,47 @@ const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
 //GET route for all recipes
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   console.log(req.session);
-  console.log("inside homeroutes");
+  console.log('inside homeroutes');
   Recipe.findAll({
-    attributes: [
-      "id",
-      "title",
-      "description",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "body", "user_id", "recipe_id"],
+        attributes: ['id', 'body', 'user_id', 'recipe_id'],
         include: {
           model: User,
-          attributes: ["id", "username", "email", "password"],
+          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
       },
     ],
   })
-    .then((dbRecipeData) => {
-      console.log("inside dbRecipeData");
-      const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render("all-recipes", {
+    .then(dbRecipeData => {
+      console.log('inside dbRecipeData');
+      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+      res.render('all-recipes', {
         recipes,
-        //loggedIn: req.session.loggedIn,
       });
-      console.log("afterrender");
+      console.log('afterrender');
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //GET route for recipe by id
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "title",
-      "description",
-      "category",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: User,
@@ -80,9 +60,9 @@ router.get("/:id", (req, res) => {
       },
     ],
   })
-    .then((dbRecipeData) => {
+    .then(dbRecipeData => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No recipe found with this id!" });
+        res.status(404).json({ message: 'No recipe found with this id!' });
         return;
       }
       res.json(dbRecipeData);
@@ -93,10 +73,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-
-
 //POST route for creating a new recipe
-router.post("/", withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Recipe.create({
     title: req.body.title,
     category: req.body.category,
@@ -106,15 +84,15 @@ router.post("/", withAuth, (req, res) => {
     directions: req.body.directions,
     user_id: req.session.user_id,
   })
-    .then((dbRecipeData) => res.json(dbRecipeData))
-    .catch((err) => {
+    .then(dbRecipeData => res.json(dbRecipeData))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //PUT route to update a recipe by id
-router.put("/:id", withAuth, (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Recipe.update(
     {
       title: req.body.title,
@@ -128,9 +106,9 @@ router.put("/:id", withAuth, (req, res) => {
       },
     }
   )
-    .then((dbRecipeData) => {
+    .then(dbRecipeData => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No recipe found with this id!" });
+        res.status(404).json({ message: 'No recipe found with this id!' });
         return;
       }
       res.json(dbRecipeData);
@@ -142,15 +120,15 @@ router.put("/:id", withAuth, (req, res) => {
 });
 
 //DELETE route to remove a recipe from the database
-router.delete("/:id", withAuth, (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Recipe.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then((dbRecipeData) => {
+    .then(dbRecipeData => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No recipe found with this id!" });
+        res.status(404).json({ message: 'No recipe found with this id!' });
         return;
       }
       res.json(dbRecipeData);
