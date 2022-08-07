@@ -22,7 +22,7 @@ Recipe.init(
       allowNull: false
     },
     category: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     ingredients: {
@@ -34,7 +34,7 @@ Recipe.init(
       allowNull: false,
     },
     time: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     directions: {

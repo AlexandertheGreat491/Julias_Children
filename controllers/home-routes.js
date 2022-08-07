@@ -1,25 +1,25 @@
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { User, Comment, Recipe } = require('../models');
+const router = require("express").Router();
+const sequelize = require("../config/connection");
+const { User, Comment, Recipe } = require("../models");
 
 //GET route for all posts when logged in from the dashboard
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.session);
-
+  console.log("inside homeroutes");
   Recipe.findAll({
     attributes: ['id', 'title', 'description', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
           model: User,
-          attributes: ['id', 'username', 'email', 'password'],
+          attributes: ["id", "username", "email", "password"],
         },
       },
       {
         model: User,
-        attributes: ['username'],
+        attributes: ["username"],
       },
     ],
   })
@@ -27,33 +27,34 @@ router.get('/', (req, res) => {
       const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
       res.render('homepage', {
         recipes,
-        loggedIn: req.session.loggedIn,
+        //loggedIn: req.session.loggedIn,
       });
+      console.log("afterrender");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
 //login route
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
 //signup route
-router.get('/signup', (req, res) => {
+router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('signup');
+  res.render("signup");
 });
 
 //GET route for recipes by id
@@ -66,15 +67,15 @@ router.get('/recipe/:id', (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
           model: User,
-          attributes: ['username'],
+          attributes: ["username"],
         },
       },
       {
         model: User,
-        attributes: ['username'],
+        attributes: ["username"],
       },
     ],
   })
@@ -88,23 +89,23 @@ router.get('/recipe/:id', (req, res) => {
       const recipe = dbRecipeData.get({ plain: true });
       // console.log(recipe);
 
-      const time = recipe.time.split(',');
+      const time = recipe.time.split(",");
       // console.log(time);
 
-      const ingredients = recipe.ingredients.split(',');
+      const ingredients = recipe.ingredients.split(",");
 
-      const directions = recipe.directions.split(',');
+      const directions = recipe.directions.split(",");
 
       //passes the data to the template
-      res.render('single-recipe', {
+      res.render("single-recipe", {
         recipe,
         time,
         ingredients,
         directions,
-        // loggedIn: req.session.loggedIn,
+        //loggedIn: req.session.loggedIn,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
