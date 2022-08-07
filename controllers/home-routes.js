@@ -7,16 +7,7 @@ router.get('/', (req, res) => {
   console.log(req.session);
 
   Recipe.findAll({
-    attributes: [
-      "id",
-      "title",
-      "description",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'description', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
@@ -32,9 +23,9 @@ router.get('/', (req, res) => {
       },
     ],
   })
-    .then((dbRecipeData) => {
-      const posts = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
-      res.render("homepage", {
+    .then(dbRecipeData => {
+      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+      res.render('homepage', {
         recipes,
         loggedIn: req.session.loggedIn,
       });
@@ -66,22 +57,12 @@ router.get('/signup', (req, res) => {
 });
 
 //GET route for recipes by id
-router.get("/recipe/:id", (req, res) => {
+router.get('/recipe/:id', (req, res) => {
   Recipe.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "title",
-      "description",
-      "category",
-      "ingredients",
-      "difficulty",
-      "time",
-      "directions",
-      "user_id",
-    ],
+    attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     include: [
       {
         model: Comment,
@@ -97,9 +78,9 @@ router.get("/recipe/:id", (req, res) => {
       },
     ],
   })
-    .then((dbRecipeData) => {
+    .then(dbRecipeData => {
       if (!dbRecipeData) {
-        res.status(404).json({ message: "No recipe found with this id!" });
+        res.status(404).json({ message: 'No recipe found with this id!' });
         return;
       }
 
