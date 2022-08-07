@@ -6,13 +6,13 @@ const withAuth = require('../../utils/auth');
 
 //GET route for all recipes
 router.get("/", (req, res) => {
-  console.log("======================");
+  console.log(req.session);
+  console.log("inside homeroutes");
   Recipe.findAll({
     attributes: [
       "id",
       "title",
       "description",
-      "category",
       "ingredients",
       "difficulty",
       "time",
@@ -22,19 +22,27 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ["id", "body", "user_id", "recipe_id"],
         include: {
           model: User,
-          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
+          attributes: ["id", "username", "email", "password"],
         },
       },
       {
         model: User,
-        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
+        attributes: ["username"],
       },
     ],
   })
-    .then((dbRecipeData) => res.json(dbRecipeData))
+    .then((dbRecipeData) => {
+      console.log("inside dbRecipeData");
+      const recipes = dbRecipeData.map((recipe) => recipe.get({ plain: true }));
+      res.render("all-recipes", {
+        recipes,
+        //loggedIn: req.session.loggedIn,
+      });
+      console.log("afterrender");
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -84,6 +92,8 @@ router.get("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
 
 //POST route for creating a new recipe
 router.post("/", withAuth, (req, res) => {
