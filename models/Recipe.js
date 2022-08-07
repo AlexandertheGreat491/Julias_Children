@@ -26,7 +26,7 @@ Recipe.init(
       allowNull: false,
     },
     ingredients: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     difficulty: {
@@ -38,7 +38,7 @@ Recipe.init(
       allowNull: false,
     },
     directions: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     user_id: {
