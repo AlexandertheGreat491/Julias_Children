@@ -22,11 +22,11 @@ Recipe.init(
       allowNull: false
     },
     category: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     ingredients: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     difficulty: {
@@ -34,11 +34,11 @@ Recipe.init(
       allowNull: false,
     },
     time: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     directions: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
