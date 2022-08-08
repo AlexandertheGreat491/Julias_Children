@@ -35,8 +35,7 @@
 
       <!-- Recipe Ingredients -->
       <h2 class='font-bold'>Ingredients</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur commodo habitasse ultrices.</p>
-
+      
       <div id='edit-ingredients' class='flex flex-wrap'>
         {{!-- LOOP OVER PRE-EXISTING INGREDIENTS --}}
         {{>ingredients ingredients}}
@@ -49,7 +48,6 @@
 
       <!-- Edit/Add Directions -->
       <h2 class='font-bold'>Directions</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur commodo habitasse ultrices.</p>
 
       <div id='edit-directions' class='flex flex-wrap'>
         {{!-- LOOP OVER PRE-EXISTING DIRECTIONS --}}
@@ -64,7 +62,6 @@
 
       <!-- Add time info -->
       <h2 class='font-bold'>Time</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur commodo habitasse ultrices.</p>
 
       <div id='time' class='flex flex-wrap'>
 
@@ -72,7 +69,7 @@
         <div class='flex items-center w-full'>
 
           <label for='prep_time' class='font-bold w-full basis-2/6'>Prep Time</label>
-          <input id='prep_time' type='number' name='prep_time' placeholder='0' class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          <input id='prep_time' type='number' name='prep_time' value="{{time}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
 
           <select id='prepUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
             <option value='minutes'>min</option>
