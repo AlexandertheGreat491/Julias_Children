@@ -69,17 +69,49 @@ const deleteElement = function (e) {
 async function editFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector("#title").value.trim();
-  const description = document.querySelector("#description").value.trim();
-  const category = document.querySelector("#category").value;
-  const difficulty = document.querySelector("#difficulty").value;
-  const ingredients = document.querySelector();
-  const directions = document.querySelector();
-  const time = document.querySelector();
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-  const response = await fetch(`/api/posts/${id}`, {
+  const title = document.querySelector('#title').value.trim();
+  const description = document.querySelector('#description').value.trim();
+  const category = document.querySelector('#category').value;
+  const ingredientSelect = document.querySelectorAll('input[name="ingredients"]');
+
+  const ingredientsArray = [];
+  for (i = 0; i < ingredientSelect.length; i++) {
+    ingredientsArray.push(ingredientSelect[i].value);
+  }
+
+  const ingredients = ingredientsArray.join(',');
+
+  const directionSelect = document.querySelectorAll('textarea[name="directions"]');
+
+  const directionsArray = [];
+  for (i = 0; i < directionSelect.length; i++) {
+    directionsArray.push(directionSelect[i].value);
+  }
+
+  const directions = directionsArray.join(',');
+
+  const timeArray = [];
+
+  const prepTime = document.querySelector('#prep_time').value;
+  const prepTimeUnits = document.querySelector('#prepUnits').value;
+
+  const prepString = prepTime + ' ' + prepTimeUnits;
+
+  const cookTime = document.querySelector('#cook_time').value;
+  const cookTimeUnits = document.querySelector('#cookUnits').value;
+
+  const cookString = cookTime + ' ' + cookTimeUnits;
+
+  const totalTime = Number(prepTime) + Number(cookTime);
+
+  timeArray.push(prepString, cookString, totalTime);
+
+  const time = timeArray.join(',');
+
+  const difficulty = document.querySelector('#difficulty').value;
+  console.log(title, description, category, ingredients, directions, time);
+  
+  const response = await fetch(`/api/recipes/${id}`, {
     method: "PUT",
     body: JSON.stringify({
       title,
