@@ -1,0 +1,8 @@
+{{#each directions as |direction|}}
+
+  <div class='flex items-center w-full'>
+    <input type='text' name='ingredients' value='{{direction}}' class='w-3/4 border-2 border-blue-300 p-1 my-2 mr-3' />
+    <img src='../images/svg/delete_btn.svg' class='deleteBtn filter-blue h-9' />
+  </div>
+
+{{/each}}

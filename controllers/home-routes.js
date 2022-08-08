@@ -87,10 +87,8 @@ router.get('/recipe/:id', (req, res) => {
 
       //serializes the data
       const recipe = dbRecipeData.get({ plain: true });
-      // console.log(recipe);
 
       const time = recipe.time.split(',');
-      // console.log(time);
 
       const ingredients = recipe.ingredients.split(',');
 
