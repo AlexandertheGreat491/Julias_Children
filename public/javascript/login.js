@@ -25,6 +25,7 @@ async function loginFormHandler(event) {
 async function signupFormHandler(event) {
   event.preventDefault();
 
+  const username = document.querySelector('#username').value.trim();
   const firstName = document.querySelector('#first_name').value.trim();
   const lastName = document.querySelector('#last_name').value.trim();
   const email = document.querySelector('#user_email').value.trim();
@@ -35,6 +36,7 @@ async function signupFormHandler(event) {
     const response = await fetch('/api/users', {
       method: 'post',
       body: JSON.stringify({
+        username,
         firstName,
         lastName,
         email,
@@ -42,6 +44,7 @@ async function signupFormHandler(event) {
       }),
       headers: { 'Content-Type': 'application/json' },
     });
+    alert('Account created, you can now log in!');
   } else {
     alert('Please check your info!');
     return;
