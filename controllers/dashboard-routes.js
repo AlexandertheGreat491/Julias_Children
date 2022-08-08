@@ -14,7 +14,7 @@ router.get('/', withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
         include: {
           model: User,
           attributes: ['username'],
@@ -67,6 +67,7 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
       if (dbRecipeData) {
         const recipe = dbRecipeData.get({ plain: true });
         const time = recipe.time.split(',');
+        console.log(time);
         const ingredients = recipe.ingredients.split(',');
         const directions = recipe.directions.split(',');
         res.render('edit-recipe', {
