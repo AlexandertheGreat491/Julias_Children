@@ -44,7 +44,9 @@ async function signupFormHandler(event) {
       }),
       headers: { 'Content-Type': 'application/json' },
     });
-    alert('Account created, you can now log in!');
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    }
   } else {
     alert('Please check your info!');
     return;
