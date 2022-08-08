@@ -97,8 +97,11 @@ router.put('/:id', withAuth, (req, res) => {
   Recipe.update(
     {
       title: req.body.title,
+      description: req.body.description,
       category: req.body.category,
+      difficulty: req.body.difficulty,
       ingredients: req.body.ingredients,
+      directions: req.body.directions,
       time: req.body.time,
     },
     {
