@@ -16,5 +16,4 @@ async function deleteFormHandler(event) {
   }
   
   // NEED TO CAPTURE DELETE-RECIPE BUTTON ELEMENT
-  document.querySelector(/* */).addEventListener('click', deleteFormHandler);
-  
+  document.querySelector('#delete-recipe').addEventListener('click', deleteFormHandler);
