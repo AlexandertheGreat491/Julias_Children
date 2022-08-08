@@ -9,11 +9,12 @@ async function deleteFormHandler(event) {
     });
   
     if (response.ok) {
-      document.location.replace(/* */);
+      document.location.replace(/dashboard/);
     } else {
       alert(response.statusText);
     }
   }
   
+  // NEED TO CAPTURE DELETE-RECIPE BUTTON ELEMENT
   document.querySelector(/* */).addEventListener('click', deleteFormHandler);
   
