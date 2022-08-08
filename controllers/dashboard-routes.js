@@ -53,7 +53,7 @@ router.get('/add-recipe', withAuth, (req, res) => {
 
 //will render the edit-recipe page
 router.get("/edit-recipe/:id", withAuth, (req, res) => {
-  Recipe.findByPk(req.params.id, {
+  Recipe.findOne(req.params.id, {
     attributes: [
       "id",
       "title",
