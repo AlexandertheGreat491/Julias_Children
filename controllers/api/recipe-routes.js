@@ -77,6 +77,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   Recipe.create({
     title: req.body.title,
+    description: req.body.description,
     category: req.body.category,
     ingredients: req.body.ingredients,
     difficulty: req.body.difficulty,
