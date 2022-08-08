@@ -109,6 +109,9 @@ async function editFormHandler(event) {
   const time = timeArray.join(',');
 
   const difficulty = document.querySelector('#difficulty').value;
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
   console.log(title, description, category, ingredients, directions, time);
   
   const response = await fetch(`/api/recipes/${id}`, {
