@@ -1,14 +1,18 @@
-<div id="recipe-{{this.id}}" class="recipe-card flex flex-col h-64">
-  <div class="recipe-card-image relative w-full">
-    <img class="w-full h-52 object-cover" src="{{this.image}}" />
-    <a>
-      <img
-        src="../images/svg/three-dots.svg"
-        class="h-10 w-auto absolute top-2 right-5 filter-blue"/>
-    </a>
+<a href='/recipe/{{this.id}}'>
+  <div id='recipe-{{this.id}}' class='recipe-card flex flex-col h-64'>
+    <div class='recipe-card-image relative w-full'>
+      <img class='w-full h-52 object-cover' src='https://placehold.jp/16/f4f4f4/3C82F6/150x150.png?text=Julias%20Children' />
+
+      {{#if this.dashboard}}
+        <a>
+          <img src='../images/svg/three-dots.svg' class='h-10 w-auto absolute top-2 right-5 filter-blue' />
+        </a>
+      {{/if}}
+    </div>
+
+    <div class='recipe-card-info w-11/12 p-3 bg-blue-300 -mt-20 mx-auto z-50'>
+      <h2 class='font-bold'>{{this.title}}</h2>
+      <p>{{this.description}}</p>
+    </div>
   </div>
-  <div class="recipe-card-info w-11/12 p-3 bg-blue-300 -mt-20 mx-auto">
-    <h2 class="font-bold">{{this.title}}</h2>
-    <p>{{this.description}}</p>
-  </div>
-</div>
+</a>

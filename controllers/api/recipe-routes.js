@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
       const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
       res.render('all-recipes', {
         recipes,
+        dashboard: false,
       });
       console.log('afterrender');
     })
