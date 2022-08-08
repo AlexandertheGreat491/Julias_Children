@@ -651,6 +651,12 @@ video {
 .w-8 {
   width: 2rem;
 }
+.w-7\/12 {
+  width: 58.333333%;
+}
+.w-6\/12 {
+  width: 50%;
+}
 .min-w-max {
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
