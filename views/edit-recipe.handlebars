@@ -39,11 +39,7 @@
 
       <div id='edit-ingredients' class='flex flex-wrap'>
         {{!-- LOOP OVER PRE-EXISTING INGREDIENTS --}}
-        <div class='flex items-center w-full'>
-          <input type='text' name='ingredients' placeholder='i.e. 2 medium onions' class='w-3/4 border-2 border-blue-300 p-1 my-2 mr-3' />
-          <img src='../images/svg/delete_btn.svg' class='deleteBtn filter-blue h-9' />
-        </div>
-
+        {{> ingredients ingredients}}
       </div>
       <button id='addIngredientBtn' type='button' class='px-2 py-1 bg-blue-300 rounded-md text-blue-900 mt-2 font-semibold border-2 border-blue-800 block mx-auto'>
         + Add Ingredient
@@ -57,12 +53,8 @@
 
       <div id='edit-directions' class='flex flex-wrap'>
         {{!-- LOOP OVER PRE-EXISTING DIRECTIONS --}}
-        <div class='flex items-center w-full'>
-          <textarea name='directions' placeholder='i.e. 2 medium onions' class='w-3/4 h-20 border-2 border-blue-300 p-1 my-2 mr-3'></textarea>
-          <img src='../images/svg/delete_btn.svg' class='deleteBtn filter-blue h-9' />
+        {{> directions directions}}
         </div>
-
-      </div>
 
       <button id='addDirectionBtn' type='button' class='px-2 py-1 bg-blue-300 rounded-md text-blue-900 mt-2 font-semibold border-2 border-blue-800 block mx-auto'>
         + Add step
