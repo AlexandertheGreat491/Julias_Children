@@ -69,12 +69,21 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
         const time = recipe.time.split(',');
         const prepSplit = time[0].split(' ');
         const cookSplit = time[1].split(' ');
+
+        const prepNum = prepSplit[0];
+        const prepUnit = prepSplit[1];
+
+        const cookNum = cookSplit[0];
+        const cookUnit = cookSplit[1];
+
         const ingredients = recipe.ingredients.split(',');
         const directions = recipe.directions.split(',');
         res.render('edit-recipe', {
           recipe,
-          prepSplit,
-          cookSplit,
+          prepNum,
+          prepUnit,
+          cookNum,
+          cookUnit,
           ingredients,
           directions,
           loggedIn: true,

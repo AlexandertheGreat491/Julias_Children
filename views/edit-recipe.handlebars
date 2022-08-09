@@ -73,14 +73,13 @@
         <div class='flex items-center w-full'>
 
           <label for='prep_time' class='font-bold w-full basis-2/6'>Prep Time</label>
-          <input id='prep_time' type='number' name='prep_time' value="{{prepSplit[0]}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          <input id='prep_time' type='number' name='prep_time' value="{{prepNum}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
 
           <select id='prepUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
-            {{#select "{{time[1].value}}"}}
+            <option value="{{prepUnit}}" selected="selected">{{prepUnit}}</option>
             <option value='minutes'>min</option>
             <option value='hours'>hr</option>
             <option value='days'>days</option>
-            {{/select}}
           </select>
 
         </div>
@@ -89,14 +88,15 @@
         <div class='flex items-center w-full'>
 
           <label for='cook_time' class='font-bold w-full basis-2/6'>Cook Time</label>
-          <input id='cook_time' type='number' name='cook_time' value="{{cookSplit[0]}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          <input id='cook_time' type='number' name='cook_time' value="{{cookNum}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          {{!-- cookSplit = [20, minutes] --}}
 
           <select id='cookUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
-            {{#select "{{time[3].value}}"}}
+            <option value="{{cookUnit}}" selected="selected">{{cookUnit}}</option>
             <option value='minutes'>min</option>
             <option value='hours'>hr</option>
             <option value='days'>days</option>
-            {{/select}}
+            
           </select>
 
         </div>
