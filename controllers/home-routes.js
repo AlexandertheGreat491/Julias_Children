@@ -28,6 +28,7 @@ router.get('/', (req, res) => {
       res.render('homepage', {
         recipes,
         // loggedIn: req.session.loggedIn,
+
       });
       console.log('afterrender');
     })

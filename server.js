@@ -31,14 +31,18 @@ const hbs = exphbs.create({ helpers });
 
 app.use(session(sess));
 
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
