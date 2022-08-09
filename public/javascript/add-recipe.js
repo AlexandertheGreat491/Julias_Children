@@ -25,7 +25,7 @@ const addIngredient = function () {
   ingredientsSection.appendChild(ingredientCard);
 };
 
-// Event listener for addDirection button
+// Event listener for addIngredient button
 addIngredientBtn.addEventListener('click', addIngredient);
 
 // Direction elements

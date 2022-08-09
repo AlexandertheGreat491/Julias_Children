@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
         include: {
           model: User,
           attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
@@ -97,8 +97,11 @@ router.put('/:id', withAuth, (req, res) => {
   Recipe.update(
     {
       title: req.body.title,
+      description: req.body.description,
       category: req.body.category,
+      difficulty: req.body.difficulty,
       ingredients: req.body.ingredients,
+      directions: req.body.directions,
       time: req.body.time,
     },
     {
