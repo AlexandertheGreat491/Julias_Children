@@ -37,12 +37,12 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-//will render the add-recipe page
+//renders the add-recipe page
 router.get('/add-recipe', withAuth, (req, res) => {
   res.render('add-recipe');
 });
 
-//will render the edit-recipe page
+//renders the edit-recipe page
 router.get('/edit-recipe/:id', withAuth, (req, res) => {
   Recipe.findOne({
     where: {
