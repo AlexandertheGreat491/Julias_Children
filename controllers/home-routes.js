@@ -4,38 +4,7 @@ const { User, Comment, Recipe } = require('../models');
 
 //GET route for all posts when logged in from the dashboard
 router.get('/', (req, res) => {
-  console.log(req.session);
-  console.log('inside homeroutes');
-  Recipe.findAll({
-    attributes: ['id', 'title', 'description', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
-        include: {
-          model: User,
-          attributes: ['id', 'username', 'email', 'password'],
-        },
-      },
-      {
-        model: User,
-        attributes: ['username'],
-      },
-    ],
-  })
-    .then(dbRecipeData => {
-      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
-      res.render('homepage', {
-        recipes,
-        // loggedIn: req.session.loggedIn,
-
-      });
-      console.log('afterrender');
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  res.render('homepage', { loggedIn: req.session.loggedIn });
 });
 
 //login route
@@ -48,14 +17,36 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-//signup route
-router.get('/signup', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('signup');
+router.get('/recipes', (req, res) => {
+  Recipe.findAll({
+    attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
+        include: {
+          model: User,
+          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
+        },
+      },
+      {
+        model: User,
+        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
+      },
+    ],
+  })
+    .then(dbRecipeData => {
+      console.log('inside dbRecipeData');
+      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+      res.render('all-recipes', {
+        recipes,
+      });
+      console.log('afterrender');
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 //GET route for recipes by id
