@@ -31,7 +31,10 @@ Chefs can access to any recipe that match their skill and tool that they are pra
 (image)
 
 ### As a member
-Chefs need to create an ID (image)
+Chefs need to create an ID 
+
+![ID create](./public/images/screenshots/mainpage.PNG)
+
 
 Once they become member, they can post their recipe
  (image)
