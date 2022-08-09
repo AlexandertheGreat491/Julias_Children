@@ -67,6 +67,7 @@ const deleteElement = function (e) {
 // Delete ingredient/direction handler end
 
 async function editFormHandler(event) {
+
   event.preventDefault();
 
   const title = document.querySelector('#title').value.trim();
@@ -77,6 +78,7 @@ async function editFormHandler(event) {
   const ingredientsArray = [];
   for (i = 0; i < ingredientSelect.length; i++) {
     ingredientsArray.push(ingredientSelect[i].value);
+
   }
 
   const ingredients = ingredientsArray.join(',');
