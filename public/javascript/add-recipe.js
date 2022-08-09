@@ -75,6 +75,7 @@ deleteBtns.forEach(btn => {
 
 // Submit Form
 async function newFormHandler(event) {
+
   event.preventDefault();
 
   const title = document.querySelector('#title').value.trim();
@@ -85,6 +86,7 @@ async function newFormHandler(event) {
   const ingredientsArray = [];
   for (i = 0; i < ingredientSelect.length; i++) {
     ingredientsArray.push(ingredientSelect[i].value);
+
   }
 
   const ingredients = ingredientsArray.join(',');
