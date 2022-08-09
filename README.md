@@ -28,7 +28,8 @@ Chefs can find out recipe that can desire them to cook. They can [view and pick]
 
 ### As a viewer
 Chefs can access to any recipe that match their skill and tool that they are practicing
-(image)
+
+![as a viewer](./public/images/screenshots/as-a-viewer.PNG)
 
 ### As a member
 Chefs need to create an ID 
