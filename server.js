@@ -14,7 +14,7 @@ const sess = {
   secret: 'Super duper secret secret',
   cookie: {
     // Session will automatically expire after 20 minutes
-    expires: 20 * 60 * 1000,
+    // expires: 20 * 60 * 1000,
   },
   resave: false,
   saveUninitialized: true,
