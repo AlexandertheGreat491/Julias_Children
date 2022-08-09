@@ -1,19 +1,21 @@
 async function deleteFormHandler(event) {
-    event.preventDefault();
-  
-    const id = window.location.toString().split('/')[
-      window.location.toString().split('/').length - 1
-    ];
-    const response = await fetch(`/api/posts/${id}`, {
-      method: 'DELETE'
-    });
-  
-    if (response.ok) {
-      document.location.replace(/dashboard/);
-    } else {
-      alert(response.statusText);
-    }
+  event.preventDefault();
+  let recipeId = event.path[3].id.split('-');
+  recipeId = recipeId[1];
+
+  const response = await fetch(`/api/recipes/${recipeId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    document.location.replace(/dashboard/);
+  } else {
+    alert(response.statusText);
   }
-  
-  // NEED TO CAPTURE DELETE-RECIPE BUTTON ELEMENT
-  document.querySelector('.delete-recipe').addEventListener('click', deleteFormHandler);
+}
+
+// NEED TO CAPTURE DELETE-RECIPE BUTTON ELEMENT
+const deleteRecipeBtns = document.querySelectorAll('.delete-recipe');
+deleteRecipeBtns.forEach(btn => {
+  btn.addEventListener('click', deleteFormHandler);
+});
