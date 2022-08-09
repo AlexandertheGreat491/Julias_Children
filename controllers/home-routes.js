@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
         include: {
           model: User,
           attributes: ['id', 'username', 'email', 'password'],
@@ -27,7 +27,8 @@ router.get('/', (req, res) => {
       const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
       res.render('homepage', {
         recipes,
-        loggedIn: req.session.loggedIn,
+        // loggedIn: req.session.loggedIn,
+
       });
       console.log('afterrender');
     })
@@ -67,7 +68,7 @@ router.get('/recipe/:id', (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'body', 'user_id', 'recipe_id'],
+        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
         include: {
           model: User,
           attributes: ['username'],
@@ -87,10 +88,9 @@ router.get('/recipe/:id', (req, res) => {
 
       //serializes the data
       const recipe = dbRecipeData.get({ plain: true });
-      // console.log(recipe);
+      console.log(recipe);
 
       const time = recipe.time.split(',');
-      // console.log(time);
 
       const ingredients = recipe.ingredients.split(',');
 
@@ -102,7 +102,7 @@ router.get('/recipe/:id', (req, res) => {
         time,
         ingredients,
         directions,
-        //loggedIn: req.session.loggedIn,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch(err => {

@@ -1,0 +1,8 @@
+{{#each this as |direction|}}
+
+  <div class='flex items-center w-full'>
+    <textarea name='directions' class='w-3/4 h-20 border-2 border-blue-300 p-1 my-2 mr-3'>{{direction}}</textarea>
+    <img src='../../images/svg/delete_btn.svg' class='deleteBtn filter-blue h-9' />
+  </div>
+
+{{/each}}

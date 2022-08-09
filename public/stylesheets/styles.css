@@ -527,6 +527,15 @@ video {
 .bottom-0 {
   bottom: 0px;
 }
+.right-10 {
+  right: 2.5rem;
+}
+.right-14 {
+  right: 3.5rem;
+}
+.right-16 {
+  right: 4rem;
+}
 .z-50 {
   z-index: 50;
 }
@@ -593,6 +602,9 @@ video {
 }
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
 }
 .block {
   display: block;

@@ -1,0 +1,12 @@
+<div class='comments'>
+  {{#each this}}
+    <div class='comment mb-3'>
+      <div class='meta'>
+        <h3 class='font-semibold'>{{user.username}}</h3>
+      </div>
+      <div class='text'>
+        {{comment_text}}
+      </div>
+    </div>
+  {{/each}}
+</div>
