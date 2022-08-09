@@ -12,7 +12,7 @@
       </div>
       <div class='border-2 border-blue-700 p-3 w-10/12 mt-5'>
         {{#each time as |time|}}
-          <p><b class='text-blue-700'> {{time}} </b> </p>
+        <p><b class='text-blue-700'> {{time}} </b> </p>
         {{/each}}
       </div>
     </div>
@@ -24,10 +24,10 @@
       <div id='ingredients-list'>
 
         {{#each ingredients as |ingredient|}}
-          <div class='flex items-center mt-4'>
-            <input type='checkbox' class='h-8 w-8 mr-4' />
-            <p>{{ingredient}}</p>
-          </div>
+        <div class='flex items-center mt-4'>
+          <input type='checkbox' class='h-8 w-8 mr-4' />
+          <p>{{ingredient}}</p>
+        </div>
         {{/each}}
       </div>
     </div>
@@ -41,19 +41,26 @@
       <div id='directions-list'>
 
         {{#each directions as |direction|}}
-          <div class='mt-7'>
-            <div class='flex mb-2 items-center'>
-              <input type='checkbox' class='h-8 w-8 mr-4' />
-              <p>
-                <b>Step {{math @index '+' 1}}:</b>
-              </p>
-            </div>
-            <p>{{direction}}</p>
+        <div class='mt-7'>
+          <div class='flex mb-2 items-center'>
+            <input type='checkbox' class='h-8 w-8 mr-4' />
+            <p>
+              <b>Step {{math @index '+' 1}}:</b>
+            </p>
           </div>
+          <p>{{direction}}</p>
+        </div>
         {{/each}}
 
       </div>
     </div>
 
+  </div>
+  <div>
+
+    <h2 class='font-bold text-xl w-full mb-4'>Comments:</h2>
+    {{#if recipe.comments.length}}
+    {{>comments recipe.comments}}
+    {{/if}}
   </div>
 </section>

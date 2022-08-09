@@ -87,6 +87,7 @@ router.get('/recipe/:id', (req, res) => {
 
       //serializes the data
       const recipe = dbRecipeData.get({ plain: true });
+      console.log(recipe);
 
       const time = recipe.time.split(',');
 
@@ -100,7 +101,7 @@ router.get('/recipe/:id', (req, res) => {
         time,
         ingredients,
         directions,
-        //loggedIn: req.session.loggedIn,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch(err => {
