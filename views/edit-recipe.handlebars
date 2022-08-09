@@ -73,7 +73,7 @@
         <div class='flex items-center w-full'>
 
           <label for='prep_time' class='font-bold w-full basis-2/6'>Prep Time</label>
-          <input id='prep_time' type='number' name='prep_time' value="{{time}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          <input id='prep_time' type='number' name='prep_time' value="{{prepSplit[0]}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
 
           <select id='prepUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
             {{#select "{{time[1].value}}"}}
@@ -89,7 +89,7 @@
         <div class='flex items-center w-full'>
 
           <label for='cook_time' class='font-bold w-full basis-2/6'>Cook Time</label>
-          <input id='cook_time' type='number' name='cook_time' placeholder='0' class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          <input id='cook_time' type='number' name='cook_time' value="{{cookSplit[0]}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
 
           <select id='cookUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
             {{#select "{{time[3].value}}"}}
