@@ -1,0 +1,122 @@
+<section class='mt-10 px-5 flex flex-wrap w-11/12 mx-auto sm:w-[30rem]'>
+  <div id='page-header' class='mb-5'>
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <h1 class='font-bold text-2xl'>Edit Recipe</h1>
+  </div>
+
+  <!-- Edit Recipe Form -->
+  <div class='mx-auto mt-5 flex flex-wrap'>
+    <form id='edit-recipe-form'>
+
+      <!-- Recipe title -->
+      <label for='title' class='font-bold w-full'>Recipe Title</label>
+      <input type='text' id='title' name='title' value="{{recipe.title}}" class='w-11/12 border-2 border-blue-300 p-1 my-2' />
+
+      <!-- Recipe description -->
+      <label for='description' class='font-bold w-full'>Description</label>
+      <input type='text' id='description' name='description' value="{{recipe.description}}" class='w-11/12 border-2 border-blue-300 p-1 my-2' />
+
+      <select id='category' name='category' class='w-6/12 border-2 border-blue-300 p-1 my-2'>
+        <option value="{{recipe.category}}" selected="selected">{{recipe.category}}</option>
+        <option value='breakfast'>breakfast</option>
+        <option value='lunch'>lunch</option>
+        <option value='dinner'>dinner</option>
+        <option value='snack'>snack</option>
+        <option value='dessert'>dessert</option>
+        
+      </select>
+
+      <select id='difficulty' name='difficulty' class='w-6/12 border-2 border-blue-300 p-1 my-2'>
+        <option value="{{recipe.difficulty}}" selected="selected">{{recipe.difficulty}}</option>
+        <option value='easy'>easy</option>
+        <option value='moderate'>moderate</option>
+        <option value='hard'>hard</option>
+        <option value='expert'>expert</option>
+        
+      </select>
+
+      <hr class='border-1 w-full border-slate-500 mx-auto my-10' />
+
+      <!-- Recipe Ingredients -->
+      <h2 class='font-bold'>Ingredients</h2>
+      
+      <div id='edit-ingredients' class='flex flex-wrap'>
+        {{!-- LOOP OVER PRE-EXISTING INGREDIENTS --}}
+        {{>ingredients ingredients}}
+      </div>
+      <button id='addIngredientBtn' type='button' class='px-2 py-1 bg-blue-300 rounded-md text-blue-900 mt-2 font-semibold border-2 border-blue-800 block mx-auto'>
+        + Add Ingredient
+      </button>
+
+      <hr class='border-1 w-full border-slate-500 mx-auto my-10' />
+
+      <!-- Edit/Add Directions -->
+      <h2 class='font-bold'>Directions</h2>
+
+      <div id='edit-directions' class='flex flex-wrap'>
+        {{!-- LOOP OVER PRE-EXISTING DIRECTIONS --}}
+        {{>directions directions}}
+        </div>
+
+      <button id='addDirectionBtn' type='button' class='px-2 py-1 bg-blue-300 rounded-md text-blue-900 mt-2 font-semibold border-2 border-blue-800 block mx-auto'>
+        + Add step
+      </button>
+
+      <hr class='border-1 w-full border-slate-500 mx-auto my-10' />
+
+      <!-- Add time info -->
+      <h2 class='font-bold'>Time</h2>
+
+      <div id='time' class='flex flex-wrap'>
+
+        <!-- Prep Time -->
+        <div class='flex items-center w-full'>
+
+          <label for='prep_time' class='font-bold w-full basis-2/6'>Prep Time</label>
+          <input id='prep_time' type='number' name='prep_time' value="{{prepNum}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+
+          <select id='prepUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
+            <option value="{{prepUnit}}" selected="selected">{{prepUnit}}</option>
+            <option value='minutes'>min</option>
+            <option value='hours'>hr</option>
+            <option value='days'>days</option>
+          </select>
+
+        </div>
+
+        <!-- Cook Time -->
+        <div class='flex items-center w-full'>
+
+          <label for='cook_time' class='font-bold w-full basis-2/6'>Cook Time</label>
+          <input id='cook_time' type='number' name='cook_time' value="{{cookNum}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
+          {{!-- cookSplit = [20, minutes] --}}
+
+          <select id='cookUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
+            <option value="{{cookUnit}}" selected="selected">{{cookUnit}}</option>
+            <option value='minutes'>min</option>
+            <option value='hours'>hr</option>
+            <option value='days'>days</option>
+            
+          </select>
+
+        </div>
+
+      </div>
+
+      <hr class='border-1 w-full border-slate-500 mx-auto my-10' />
+
+      <div class='flex items-center w-full mx-auto justify-center'>
+        <button id='save-changes' type='submit' class='px-2 py-1 bg-blue-300 rounded-md text-blue-900 font-semibold border-2 border-blue-800 ml-4'>
+          Save Changes
+        </button>
+        <button id='delete-recipe' type='button' class='px-2 py-1 bg-blue-300 rounded-md text-blue-900 font-semibold border-2 border-blue-800 ml-4'>
+          Delete Recipe
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<script src='/javascript/edit-recipe.js'></script>
+<script src="/javascript/delete-recipe.js"></script>

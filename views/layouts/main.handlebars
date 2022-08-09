@@ -14,10 +14,10 @@
       <nav class='flex space-x-2 items-center'>
         {{#if loggedIn}}
           <a href='/dashboard'>dashboard</a>
-          |
+          &ThickSpace;|
           <button id='logout'>logout</button>
         {{else}}
-          <button href='/login' id='login'>login</button>
+          <a href='/login' id='login'>login</a>
         {{/if}}
       </nav>
     </header>
@@ -28,6 +28,7 @@
       <h1 class='font-bold'>
         Julia's Children
       </h1>
+      <a href='https://icons8.com'>Icons 8</a>
     </footer>
 
     {{#if loggedIn}}
