@@ -37,6 +37,56 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+//GET route for recipe by id
+router.get("/single-recipe/:id", (req, res) => {
+  Recipe.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "title",
+      "description",
+      "category",
+      "ingredients",
+      "difficulty",
+      "time",
+      "directions",
+      "user_id",
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ["id", "username", "first_name", "last_name", "email"],
+      },
+      {
+        model: Comment,
+        include: {
+          model: User,
+          attributes: ["id", "username", "first_name", "last_name", "email"],
+        },
+      },
+    ],
+  })
+    .then((dbRecipeData) => {
+      if (!dbRecipeData) {
+        res.status(404).json({ message: "No recipe found with this id!" });
+        return;
+      } else {
+        const recipe = dbRecipeData.get({ plain: true });
+        res.render("single-recipe", {
+          recipe,
+          loggedIn: req.session.loggedIn
+        });
+        res.json(dbRecipeData);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 //will render the add-recipe page
 router.get('/add-recipe', withAuth, (req, res) => {
   res.render('add-recipe');
