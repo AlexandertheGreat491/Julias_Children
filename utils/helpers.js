@@ -12,18 +12,19 @@ module.exports = {
       "%": lvalue % rvalue,
     }[operator];
   },
+  // dropdownSelect helper via LukeChannings found here: https://gist.github.com/LukeChannings/6173ab951d8b1dc4602e
+  dropdownSelect:
+    ("select",
+    function (value, options) {
+      return options
+        .fn()
+        .split("\n")
+        .map(function (v) {
+          var t = 'value="' + value + '"';
+          return RegExp(t).test(v)
+            ? v.replace(t, t + ' selected="selected"')
+            : v;
+        })
+        .join("\n");
+    }),
 };
-
-function dropdownSelect() {
-  Handlebars.registerHelper("select", function (value, options) {
-    return options
-      .fn()
-      .split("\n")
-      .map(function (v) {
-        var t = 'value="' + value + '"';
-        return RegExp(t).test(v) ? v.replace(t, t + ' selected="selected"') : v;
-      })
-      .join("\n");
-  });
-};
-module.exports = dropdownSelect;
