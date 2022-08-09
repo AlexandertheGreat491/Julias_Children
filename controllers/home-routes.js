@@ -20,6 +20,7 @@ router.get('/login', (req, res) => {
 router.get('/recipes', (req, res) => {
   Recipe.findAll({
     attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
+    order: [['created_at', 'DESC']],
     include: [
       {
         model: Comment,
@@ -40,8 +41,8 @@ router.get('/recipes', (req, res) => {
       const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
       res.render('all-recipes', {
         recipes,
+        loggedIn: req.session.loggedIn,
       });
-      console.log('afterrender');
     })
     .catch(err => {
       console.log(err);
