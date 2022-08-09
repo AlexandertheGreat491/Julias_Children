@@ -70,6 +70,10 @@ They can also edit, making change to their recipe and even delete the recipe tha
 
 [Tailwind Docs](https://tailwindcss.com/docs/installation)
 
+[Handlebars](https://handlebarsjs.com/guide/)
+
+[Luke Channing](https://gist.github.com/LukeChannings/6173ab951d8b1dc4602e)
+
 ## Collaborators
 ### [Alex Van Dyke],[Tran Loi],[Joey Rebne],[Jordan Degerness]
 
