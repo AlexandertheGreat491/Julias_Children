@@ -37,7 +37,8 @@ Chefs need to create an ID
 
 
 Once they become member, they can post their recipe
- (image)
+
+![my recipe](./public/images/screenshots/my-recipes.PNG)
 
 They can also edit, making change to their recipe and even delete the recipe that they had posted
 (image)
