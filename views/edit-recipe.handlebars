@@ -17,7 +17,7 @@
       <input type='text' id='description' name='description' value="{{recipe.description}}" class='w-11/12 border-2 border-blue-300 p-1 my-2' />
 
       <select id='category' name='category' class='w-6/12 border-2 border-blue-300 p-1 my-2'>
-        {{#select "{{recipe.category.value}}"}}
+        {{#select "{{recipe.category}}"}}
         <option value='breakfast'>breakfast</option>
         <option value='lunch'>lunch</option>
         <option value='dinner'>dinner</option>
@@ -27,7 +27,7 @@
       </select>
 
       <select id='difficulty' name='difficulty' class='w-6/12 border-2 border-blue-300 p-1 my-2'>
-        {{#select "{{recipe.difficulty.value}}"}}
+        {{#select "{{recipe.difficulty}}"}}
         <option value='easy'>easy</option>
         <option value='moderate'>moderate</option>
         <option value='hard'>hard</option>

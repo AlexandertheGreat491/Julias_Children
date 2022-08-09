@@ -67,12 +67,14 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
       if (dbRecipeData) {
         const recipe = dbRecipeData.get({ plain: true });
         const time = recipe.time.split(',');
-        console.log(time);
+        const prepSplit = time[0].split(' ');
+        const cookSplit = time[1].split(' ');
         const ingredients = recipe.ingredients.split(',');
         const directions = recipe.directions.split(',');
         res.render('edit-recipe', {
           recipe,
-          time,
+          prepSplit,
+          cookSplit,
           ingredients,
           directions,
           loggedIn: true,
