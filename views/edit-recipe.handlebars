@@ -27,10 +27,12 @@
       </select>
 
       <select id='difficulty' name='difficulty' class='w-6/12 border-2 border-blue-300 p-1 my-2'>
+        {{#select "{{recipe.difficulty.value}}"}}
         <option value='easy'>easy</option>
         <option value='moderate'>moderate</option>
         <option value='hard'>hard</option>
         <option value='expert'>expert</option>
+        {{/select}}
       </select>
 
       <hr class='border-1 w-full border-slate-500 mx-auto my-10' />
@@ -74,9 +76,11 @@
           <input id='prep_time' type='number' name='prep_time' value="{{time}}" class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
 
           <select id='prepUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
+            {{#select "{{time[1].value}}"}}
             <option value='minutes'>min</option>
             <option value='hours'>hr</option>
             <option value='days'>days</option>
+            {{/select}}
           </select>
 
         </div>
@@ -88,9 +92,11 @@
           <input id='cook_time' type='number' name='cook_time' placeholder='0' class='w-10 text-center border-2 border-blue-300 p-1 my-2 mr-3 basis-1/6' />
 
           <select id='cookUnits' name='time_units' class='w-10 border-2 border-blue-300 p-1 my-2 mr-3 basis-3/6'>
+            {{#select "{{time[3].value}}"}}
             <option value='minutes'>min</option>
             <option value='hours'>hr</option>
             <option value='days'>days</option>
+            {{/select}}
           </select>
 
         </div>

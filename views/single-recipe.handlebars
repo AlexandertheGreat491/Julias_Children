@@ -56,11 +56,31 @@
     </div>
 
   </div>
-  <div>
 
+  {{#if loggedIn}}
+  <form class="comment-form">
+    <div>
+      <textarea name="comment-body"></textarea>
+    </div>
+
+    <div>
+      <button type="submit">add comment</button>
+    </div>
+  </form>
+  {{/if}}
+
+  <div>
     <h2 class='font-bold text-xl w-full mb-4'>Comments:</h2>
     {{#if recipe.comments.length}}
     {{>comments recipe.comments}}
     {{/if}}
   </div>
+
+
 </section>
+
+
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
