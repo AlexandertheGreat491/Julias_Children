@@ -41,7 +41,7 @@ Once they become member, they can post their recipe
 ![my recipe](./public/images/screenshots/my-recipes.PNG)
 
 They can also edit, making change to their recipe and even delete the recipe that they had posted
-(image)
+![edit recipe](./public/images/screenshots/edit-recipe.PNG)
 
 ## References
 [Connect-Session-Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
