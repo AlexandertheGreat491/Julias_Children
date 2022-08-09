@@ -80,7 +80,7 @@ They can also edit, making change to their recipe and even delete the recipe tha
 [Luke Channing](https://gist.github.com/LukeChannings/6173ab951d8b1dc4602e)
 
 ## Collaborators
-### [Alex Van Dyke],[Tran Loi],[Joey Rebne],[Jordan Degerness]
+### [Alex Van Dyke], [Tran Loi], [Joey Rebne], [Jordan Degerness]
 
 ## License
 ### MIT
