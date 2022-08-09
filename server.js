@@ -1,15 +1,10 @@
 const express = require('express');
-<<<<<<< HEAD
 const routes = require('./controllers');
-=======
-const exphbs = require('express-handlebars');
->>>>>>> 8aea7298e56f488b0dae6d93202b1f4b4c6e83b6
 
 const helpers = require('./utils/helpers');
 //const auth = require('../../utils/auth);
 
 const sequelize = require('./config/connection');
-<<<<<<< HEAD
 const path = require('path');
 
 const session = require('express-session');
@@ -48,13 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-<<<<<<< HEAD
+
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
-=======
-
-sequelize.sync({ force: false }).then(() => {
-
->>>>>>> feature/README
   app.listen(PORT, () => console.log('Now listening'));
 });
