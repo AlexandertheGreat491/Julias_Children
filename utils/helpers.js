@@ -5,11 +5,25 @@ module.exports = {
     lvalue = parseFloat(lvalue);
     rvalue = parseFloat(rvalue);
     return {
-      '+': lvalue + rvalue,
-      '-': lvalue - rvalue,
-      '*': lvalue * rvalue,
-      '/': lvalue / rvalue,
-      '%': lvalue % rvalue,
+      "+": lvalue + rvalue,
+      "-": lvalue - rvalue,
+      "*": lvalue * rvalue,
+      "/": lvalue / rvalue,
+      "%": lvalue % rvalue,
     }[operator];
   },
 };
+
+function dropdownSelect() {
+  Handlebars.registerHelper("select", function (value, options) {
+    return options
+      .fn()
+      .split("\n")
+      .map(function (v) {
+        var t = 'value="' + value + '"';
+        return RegExp(t).test(v) ? v.replace(t, t + ' selected="selected"') : v;
+      })
+      .join("\n");
+  });
+};
+module.exports = dropdownSelect;
