@@ -4,7 +4,27 @@ const { User, Comment, Recipe } = require('../models');
 
 //GET route for all posts when logged in from the dashboard
 router.get('/', (req, res) => {
-  res.render('homepage', { loggedIn: req.session.loggedIn });
+  Recipe.findAll({
+    attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
+    order: [['created_at', 'DESC']],
+    limit: 6,
+  })
+    .then(dbRecipeData => {
+      console.log('inside dbRecipeData');
+      const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
+
+      const randomNum = Math.floor(Math.random() * recipes.length);
+      const randomRecipe = recipes[randomNum];
+      res.render('homepage', {
+        recipes,
+        randomRecipe,
+        loggedIn: req.session.loggedIn,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 //login route
@@ -21,20 +41,6 @@ router.get('/recipes', (req, res) => {
   Recipe.findAll({
     attributes: ['id', 'title', 'description', 'category', 'ingredients', 'difficulty', 'time', 'directions', 'user_id'],
     order: [['created_at', 'DESC']],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'user_id', 'recipe_id'],
-        include: {
-          model: User,
-          attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
-        },
-      },
-      {
-        model: User,
-        attributes: ['id', 'username', 'first_name', 'last_name', 'email'],
-      },
-    ],
   })
     .then(dbRecipeData => {
       console.log('inside dbRecipeData');
@@ -83,6 +89,8 @@ router.get('/recipe/:id', (req, res) => {
       console.log(recipe);
 
       const time = recipe.time.split(',');
+      const prepTime = time[0];
+      const cookTime = time[1];
 
       const ingredients = recipe.ingredients.split('^&*');
 
@@ -91,7 +99,8 @@ router.get('/recipe/:id', (req, res) => {
       //passes the data to the template
       res.render('single-recipe', {
         recipe,
-        time,
+        prepTime,
+        cookTime,
         ingredients,
         directions,
         loggedIn: req.session.loggedIn,

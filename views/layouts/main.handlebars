@@ -4,31 +4,33 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link href='/stylesheets/styles.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://use.typekit.net/tbk3hrw.css' />
     <title>Julia's Children</title>
   </head>
   <body>
-    <header class='flex justify-between px-5 pt-2'>
-      <h1 class='text-blue-500 text-2xl'>
-        <a href='/'>Julia's Children</a>
-      </h1>
-      <nav class='flex space-x-2 items-center'>
-        {{#if loggedIn}}
-          <a href='/dashboard'>dashboard</a>
-          &ThickSpace;|
-          <button id='logout'>logout</button>
-        {{else}}
-          <a href='/login' id='login'>login</a>
-        {{/if}}
-      </nav>
+    <header class='mx-auto shadow-md'>
+      <div class='flex justify-between px-5 py-5 items-center max-w-6xl mx-auto'>
+        <h1 class='text-blue-500 text-2xl'>
+          <a href='/'>
+            <img class='h-8 md:h-14' src='/images/logos/JC_logo_type.svg' />
+          </a>
+        </h1>
+        <nav class='flex space-x-2 items-center text-blue-700'>
+          {{#if loggedIn}}
+            <a class='hover:text-blue-400' href='/dashboard'>dashboard</a>
+            &ThickSpace; &MediumSpace;|
+            <button id='logout' class='hover:text-blue-400'>logout</button>
+          {{else}}
+            <a href='/login' id='login'>login</a>
+          {{/if}}
+        </nav>
+      </div>
     </header>
     <main>
       {{{body}}}
     </main>
-    <footer class='flex justify-evenly px-5 inset-x-0 text-center mt-10'>
-      <h1 class='font-bold'>
-        Julia's Children
-      </h1>
-      <a href='https://icons8.com'>Icons 8</a>
+    <footer class='flex justify-evenly px-5 inset-x-0 text-center mt-10 mb-5'>
+      <img class='h-8' src='/images/logos/JC_logo_type_stacked.svg' />
     </footer>
 
     {{#if loggedIn}}

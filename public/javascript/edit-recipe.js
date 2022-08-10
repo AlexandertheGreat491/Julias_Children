@@ -1,25 +1,25 @@
-const ingredientsSection = document.querySelector("#edit-ingredients");
-const addIngredientBtn = document.querySelector("#addIngredientBtn");
+const ingredientsSection = document.querySelector('#edit-ingredients');
+const addIngredientBtn = document.querySelector('#addIngredientBtn');
 
 // Add ingredient card start
 const addIngredient = function () {
   // Create div to ingredient input and delete button
-  let ingredientCard = document.createElement("div");
-  ingredientCard.className = "flex items-center w-full";
+  let ingredientCard = document.createElement('div');
+  ingredientCard.className = 'flex items-center w-full';
 
   // Create ingredient input
-  let taskInput = document.createElement("input");
-  taskInput.type = "text";
-  taskInput.name = "ingredients";
-  taskInput.placeholder = "next ingredient";
-  taskInput.className = "w-3/4 border-2 border-blue-300 p-1 my-2 mr-3";
+  let taskInput = document.createElement('input');
+  taskInput.type = 'text';
+  taskInput.name = 'ingredients';
+  taskInput.placeholder = 'next ingredient';
+  taskInput.className = 'w-3/4 border-2 border-blue-300 p-1 my-2 mr-3';
   ingredientCard.appendChild(taskInput);
 
   // create delete button
-  let deleteButton = document.createElement("img");
-  deleteButton.src = "../images/svg/delete_btn.svg";
-  deleteButton.className = "filter-blue h-9";
-  deleteButton.id = "deleteBtn";
+  let deleteButton = document.createElement('img');
+  deleteButton.src = '../images/svg/delete_btn.svg';
+  deleteButton.className = 'filter-blue h-9';
+  deleteButton.id = 'deleteBtn';
   ingredientCard.appendChild(deleteButton);
 
   ingredientsSection.appendChild(ingredientCard);
@@ -54,7 +54,7 @@ const addDirection = function () {
 };
 
 // Delete ingredient/direction handler start
-const deleteBtns = document.querySelectorAll(".deleteBtn");
+const deleteBtns = document.querySelectorAll('.deleteBtn');
 
 const deleteElement = function (e) {
   const parentDiv = e.path[2];
@@ -67,7 +67,6 @@ const deleteElement = function (e) {
 // Delete ingredient/direction handler end
 
 async function editFormHandler(event) {
-
   event.preventDefault();
 
   const title = document.querySelector('#title').value.trim();
@@ -78,10 +77,9 @@ async function editFormHandler(event) {
   const ingredientsArray = [];
   for (i = 0; i < ingredientSelect.length; i++) {
     ingredientsArray.push(ingredientSelect[i].value);
-
   }
 
-  const ingredients = ingredientsArray.join(',');
+  const ingredients = ingredientsArray.join('^&*');
 
   const directionSelect = document.querySelectorAll('textarea[name="directions"]');
 
@@ -90,7 +88,7 @@ async function editFormHandler(event) {
     directionsArray.push(directionSelect[i].value);
   }
 
-  const directions = directionsArray.join(',');
+  const directions = directionsArray.join('^&*');
 
   const timeArray = [];
 
@@ -111,13 +109,11 @@ async function editFormHandler(event) {
   const time = timeArray.join(',');
 
   const difficulty = document.querySelector('#difficulty').value;
-  const id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
+  const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
   console.log(title, description, category, ingredients, directions, time);
-  
+
   const response = await fetch(`/api/recipes/${id}`, {
-    method: "PUT",
+    method: 'PUT',
     body: JSON.stringify({
       title,
       description,
@@ -128,7 +124,7 @@ async function editFormHandler(event) {
       time,
     }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
@@ -139,11 +135,11 @@ async function editFormHandler(event) {
   }
 }
 
-document.querySelector("#edit-recipe-form").addEventListener("submit", editFormHandler);
-addIngredientBtn.addEventListener("click", addIngredient);
+document.querySelector('#edit-recipe-form').addEventListener('submit', editFormHandler);
+addIngredientBtn.addEventListener('click', addIngredient);
 addDirectionBtn.addEventListener('click', addDirection);
 
 // Watch each deleteBtn for click, delete selected element
-deleteBtns.forEach((btn) => {
-  btn.addEventListener("click", deleteElement);
+deleteBtns.forEach(btn => {
+  btn.addEventListener('click', deleteElement);
 });

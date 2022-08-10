@@ -63,42 +63,40 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
       },
     ],
   })
-    .then(
-      dbRecipeData => { 
-        if(dbRecipeData.user_id!==req.session.user_id){
-          res.redirect('/dashboard');
-        }
-        else{
-      if (dbRecipeData) {
-        const recipe = dbRecipeData.get({ plain: true });
-        const time = recipe.time.split(',');
-
-        const prepSplit = time[0].split(' ');
-        const cookSplit = time[1].split(' ');
-
-        const prepNum = prepSplit[0];
-        const prepUnit = prepSplit[1];
-
-        const cookNum = cookSplit[0];
-        const cookUnit = cookSplit[1];
-
-        const ingredients = recipe.ingredients.split(',');
-        const directions = recipe.directions.split(',');
-        res.render('edit-recipe', {
-          recipe,
-          prepNum,
-          prepUnit,
-          cookNum,
-          cookUnit,
-          ingredients,
-          directions,
-          loggedIn: true,
-        });
+    .then(dbRecipeData => {
+      if (dbRecipeData.user_id !== req.session.user_id) {
+        res.redirect('/dashboard');
       } else {
-        res.status(404).end();
+        if (dbRecipeData) {
+          const recipe = dbRecipeData.get({ plain: true });
+          const time = recipe.time.split(',');
+
+          const prepSplit = time[0].split(' ');
+          const cookSplit = time[1].split(' ');
+
+          const prepNum = prepSplit[0];
+          const prepUnit = prepSplit[1];
+
+          const cookNum = cookSplit[0];
+          const cookUnit = cookSplit[1];
+
+          const ingredients = recipe.ingredients.split('^&*');
+          const directions = recipe.directions.split('^&*');
+          res.render('edit-recipe', {
+            recipe,
+            prepNum,
+            prepUnit,
+            cookNum,
+            cookUnit,
+            ingredients,
+            directions,
+            loggedIn: true,
+          });
+        } else {
+          res.status(404).end();
+        }
       }
-    }}
-    )
+    })
     .catch(err => {
       res.status(500).json(err);
     });

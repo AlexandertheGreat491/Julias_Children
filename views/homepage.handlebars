@@ -1,27 +1,55 @@
-<section class='mt-10 px-5 flex flex-wrap w-10/12 mx-auto sm:items-center'>
-  <h1 class='text-3xl font-bold mb-3 sm:text-7xl'>
-    Welcome to
-    <br />
-    Recipe Heaven
-  </h1>
+<section class='mt-10 px-5 w-10/12 mx-auto max-w-6xl'>
 
-  <img class='my-5 mx-auto' src='https://via.placeholder.com/250x300.png?text=Random+Recipe' alt='' />
-  <p>
-    Whether you're an experienced chef hungry for a new challenge or a humble beginner looking for a simple dish to get into cooking, all of Julia's Children will find the recipes they're looking for
-    right here.
-  </p>
+  <div class=" sm:flex flex-wrap ">
+    <div id="header-info" class="sm:flex flex-wrap sm:w-3/5 sm:pr-20">
+      <h1 class='text-3xl font-bold mb-3 text-center sm:text-left sm:text-4xl lg:text-6xl text-blue-700'>
+        Welcome to
+        <br />
+        Recipe Heaven
+      </h1>
 
-  <div id='landing-buttons' class='flex flex-wrap justify-center mt-7'>
-    <a href='/recipes'>
-      <button class='p-2 bg-blue-300 rounded-md text-blue-800 m-2 font-semibold border-2 border-blue-800'>All Recipes
-      </button>
-    </a>
-    {{#unless loggedIn}}
-      <a href='/login'>
-        <button class='p-2 bg-blue-300 rounded-md text-blue-800 m-2 font-semibold border-2 border-blue-800'>Login/Sign Up
-        </button>
-      </a>
-    {{/unless}}
+      <p>
+        Whether you're an experienced chef hungry for a new challenge or a humble beginner looking for a simple dish to
+        get
+        into cooking, all of Julia's Children will find the recipes they're looking for
+        right here.
+      </p>
+
+      <div id='landing-buttons' class='flex flex-wrap justify-center mt-7'>
+        <a href='/recipes'>
+          <button class='p-2 bg-blue-300 rounded-md text-blue-800 m-2 font-semibold border-2 border-blue-800'>All
+            Recipes
+          </button>
+        </a>
+        {{#unless loggedIn}}
+        <a href='/login'>
+          <button class='p-2 bg-blue-300 rounded-md text-blue-800 m-2 font-semibold border-2 border-blue-800'>Login/Sign
+            Up
+          </button>
+        </a>
+        {{/unless}}
+      </div>
+    </div>
+    <div class="w-full sm:w-2/5 mt-10">
+    <hr class='border-4 w-1/6 mb-2 border-blue-700' />
+    <h2 class="text-2xl sm:text-xl font-bold mb-2  text-blue-700">Feature Recipe</h2>
+      {{>recipe-card-ltd randomRecipe}}
+    </div>
+
+  </div>
+
+  <div class="pt-14">
+    <hr class='border-4 sm:border-6 w-1/6  border-blue-700 my-5' />
+    <h2 class="block text-2xl mb-5 font-bold sm:text-3xl text-blue-700">Checkout the most recent recipes!</h2>
+    <div id='recent-recipes' class='grid grid-cols-1 justify-center gap-10 gap-y-1 sm:grid-cols-2 lg:grid-cols-3 '>
+      <!-- Recipe Card Partial to be looped-->
+
+      {{#each recipes as |recipe|}}
+      {{>recipe-card-ltd recipe}}
+      {{/each}}
+
+      <!-- Recipe Card Partial End-->
+    </div>
   </div>
 
 </section>
