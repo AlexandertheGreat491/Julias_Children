@@ -110,9 +110,7 @@ async function newFormHandler(event) {
 
   const cookString = cookTime + ' ' + cookTimeUnits;
 
-  const totalTime = Number(prepTime) + Number(cookTime);
-
-  timeArray.push(prepString, cookString, totalTime);
+  timeArray.push(prepString, cookString);
 
   const time = timeArray.join(',');
 
