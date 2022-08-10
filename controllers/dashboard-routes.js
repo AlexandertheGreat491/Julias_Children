@@ -2,7 +2,6 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
-const uni= require('../utils/uniqueID')
 
 router.get('/', withAuth, (req, res) => {
   console.log(req.session.user_id);
