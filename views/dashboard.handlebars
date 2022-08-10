@@ -1,36 +1,37 @@
 <section class="mt-10 px-5 flex flex-wrap w-11/12 mx-auto max-w-5xl">
-    <div id="page-header" class="mb-5 text-center w-full">
-        <h1 class="font-bold text-4xl">My Recipes</h1>
-    </div>
+  <div id="page-header" class="mb-5 text-center w-full">
+    <h1 class="font-bold text-4xl">My Recipes</h1>
+  </div>
+
+  <div id="user-recipes"
+    class="grid grid-cols-1 justify-center gap-5 w-full sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Recipe Card Partial to be looped-->
 
     {{#if recipes.length}}
-    <div id="user-recipes"
-        class="grid grid-cols-1 justify-center gap-5 w-full sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Recipe Card Partial to be looped-->
-        
-            {{#each recipes as |recipe|}}
-        
-                {{>recipe-card recipe}}
-            
-            {{/each}}
-        
-        <!-- Recipe Card Partial End-->
-    </div>
-    {{/if}}
+    {{#each recipes as |recipe|}}
 
-        <div id='add_recipe' class="recipe-card h-52">
-            <div class="recipe-card-image">
-                <!-- route link to add new recipe page -->
-                <a href="/dashboard/add-recipe">
-                    <div
-                        class="w-full h-52 object-cover bg-blue-300 flex items-center justify-center flex-wrap flex-col">
-                        <img src="../images/svg/add_button.svg" class="h-1/3 w-auto filter-blue mt-5">
-                        <p class="mt-2">Add</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+    {{>recipe-card recipe}}
+
+    {{/each}}
+    {{/if}}
+    
+  <!-- Recipe Card Partial End-->
+    <div id='add_recipe' class="recipe-card h-52">
+      <div class="recipe-card-image">
+        <!-- route link to add new recipe page -->
+        <a href="/dashboard/add-recipe">
+          <div class="w-full h-52 object-cover bg-blue-300 flex items-center justify-center flex-wrap flex-col">
+            <img src="../images/svg/add_button.svg" class="h-1/3 w-auto filter-blue mt-5">
+            <p class="mt-2">Add</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+  </div>
 </section>
+
+
 
 {{#if recipes.length}}
 <script src="/javascript/delete-recipe.js"></script>

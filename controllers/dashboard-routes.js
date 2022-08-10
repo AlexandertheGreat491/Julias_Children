@@ -30,7 +30,7 @@ router.get('/', withAuth, (req, res) => {
     .then(dbRecipeData => {
       //serializes the data prior to passing to the template
       const recipes = dbRecipeData.map(recipe => recipe.get({ plain: true }));
-      res.render('dashboard', { recipes, loggedIn: true, dashboard: true });
+      res.render('dashboard', { recipes, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
@@ -38,12 +38,12 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-//will render the add-recipe page
+//renders the add-recipe page
 router.get('/add-recipe', withAuth, (req, res) => {
   res.render('add-recipe');
 });
 
-//will render the edit-recipe page
+//renders the edit-recipe page
 router.get('/edit-recipe/:id', withAuth, (req, res) => {
   Recipe.findOne({
     where: {
