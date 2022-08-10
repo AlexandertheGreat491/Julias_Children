@@ -81,7 +81,7 @@ async function editFormHandler(event) {
 
   }
 
-  const ingredients = ingredientsArray.join(',');
+  const ingredients = ingredientsArray.join('^&*');
 
   const directionSelect = document.querySelectorAll('textarea[name="directions"]');
 
@@ -90,7 +90,7 @@ async function editFormHandler(event) {
     directionsArray.push(directionSelect[i].value);
   }
 
-  const directions = directionsArray.join(',');
+  const directions = directionsArray.join('^&*');
 
   const timeArray = [];
 
