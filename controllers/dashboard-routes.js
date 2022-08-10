@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+const uni= require('../utils/uniqueID')
 
 router.get('/', withAuth, (req, res) => {
   console.log(req.session.user_id);
@@ -63,7 +64,12 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
       },
     ],
   })
-    .then(dbRecipeData => {
+    .then(
+      dbRecipeData => { 
+        if(dbRecipeData.user_id!==req.session.user_id){
+          res.redirect('/dashboard');
+        }
+        else{
       if (dbRecipeData) {
         const recipe = dbRecipeData.get({ plain: true });
         const time = recipe.time.split(',');
@@ -92,7 +98,8 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
       } else {
         res.status(404).end();
       }
-    })
+    }}
+    )
     .catch(err => {
       res.status(500).json(err);
     });
