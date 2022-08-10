@@ -82,8 +82,8 @@ router.get('/edit-recipe/:id', withAuth, (req, res) => {
         const cookNum = cookSplit[0];
         const cookUnit = cookSplit[1];
 
-        const ingredients = recipe.ingredients.split(',');
-        const directions = recipe.directions.split(',');
+        const ingredients = recipe.ingredients.split('^&*');
+        const directions = recipe.directions.split('^&*');
         res.render('edit-recipe', {
           recipe,
           prepNum,
