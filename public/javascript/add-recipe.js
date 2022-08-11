@@ -139,5 +139,9 @@ document.querySelector('#addButton').addEventListener('click', newFormHandler);
 addDirectionBtn.addEventListener('click', addDirection);
 // Watch each deleteBtn for click, fun delete element
 deleteBtns.forEach(btn => {
-  btn.addEventListener('click', deleteElement);
+  btn.addEventListener('click', function(event) {
+    if (event.target.className === 'deleteBtn filter-blue h-9') {
+      deleteElement();
+    }
+  });
 });
