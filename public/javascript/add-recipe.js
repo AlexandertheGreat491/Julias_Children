@@ -20,7 +20,9 @@ const addIngredient = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../images/svg/delete_btn.svg';
+
   deleteButton.className = 'filter-blue h-9 deleteBtn';
+
   ingredientCard.appendChild(deleteButton);
 
   ingredientsSection.appendChild(ingredientCard);
@@ -48,7 +50,7 @@ const addDirection = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.className = 'deleteBtn filter-blue h-9';
+  deleteButton.classList.add('deleteBtn filter-blue h-9');
   directionCard.appendChild(deleteButton);
 
   directionSection.appendChild(directionCard);
