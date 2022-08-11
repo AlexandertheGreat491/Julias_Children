@@ -56,11 +56,13 @@ const addDirection = function () {
 // Delete ingredient/direction handler start
 const deleteBtns = document.querySelectorAll('.deleteBtn');
 
-const deleteElement = function (e) {
-  const parentDiv = e.path[2];
-  const elToDelete = e.path[1];
-  console.log(e.path[1]);
-  console.log(e.path[2]);
+const deleteElement = function (event) {
+  const eventPath = event.composedPath();
+  const parentDiv = eventPath[2];
+  const elToDelete = eventPath[1];
+  console.log(eventPath);
+  console.log(elToDelete);
+  console.log(parentDiv);
 
   parentDiv.removeChild(elToDelete);
 };
