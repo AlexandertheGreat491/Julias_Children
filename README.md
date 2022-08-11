@@ -21,7 +21,7 @@ As a skilled home chef, I want to have the right recipe with precise ingredients
 Pleas click the link to get the access to the app: [Julia's Children](https://secure-dusk-59698.herokuapp.com/).
 If you want to install the application, follow the link to [Public Repository](https://github.com/AlexandertheGreat491/Project-2.git).
 
-![main page ](./public/images/screenshots/mainpage.PNG)
+![main page ](public\images\screenshots\landing_page_screenshot.jpg)
 
 ## Usage
 Chefs can find out recipe that can desire them to cook. They can [view and pick](#as-a-viewer) the recipe they like or [join-in](#as-a-member), posting their own recipe, discuss and making the dish better with their idea
