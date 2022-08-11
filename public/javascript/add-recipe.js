@@ -47,8 +47,7 @@ const addDirection = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.className = 'filter-blue h-9';
-  deleteButton.className = 'deleteBtn';
+  deleteButton.className = 'deleteBtn filter-blue h-9';
   directionCard.appendChild(deleteButton);
 
   directionSection.appendChild(directionCard);
@@ -61,8 +60,8 @@ const deleteElement = function (event) {
   const parentDiv = eventPath[2];
   const elToDelete = eventPath[1];
   console.log(eventPath);
-  console.log(e.path[1]);
-  console.log(e.path[2]);
+  console.log(elToDelete);
+  console.log(parentDiv);
 
   parentDiv.removeChild(elToDelete);
 };

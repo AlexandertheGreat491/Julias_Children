@@ -17,7 +17,7 @@ const addIngredient = function () {
 
   // create delete button
   let deleteButton = document.createElement('img');
-  deleteButton.src = '../images/svg/delete_btn.svg';
+  deleteButton.src = '../../images/svg/delete_btn.svg';
   deleteButton.className = 'filter-blue h-9';
   deleteButton.className = 'deleteBtn';
   ingredientCard.appendChild(deleteButton);
@@ -45,8 +45,7 @@ const addDirection = function () {
   // Create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.className = 'filter-blue h-9';
-  deleteButton.className = 'deleteBtn';
+  deleteButton.className = 'deleteBtn filter-blue h-9';
   directionCard.appendChild(deleteButton);
 
   // Add input and delete button to direction card
