@@ -54,24 +54,18 @@ const addDirection = function () {
   directionSection.appendChild(directionCard);
 };
 
-// Event listener for addDirection button
-addDirectionBtn.addEventListener('click', addDirection);
-
 const deleteBtns = document.querySelectorAll('.deleteBtn');
 
-const deleteElement = function (e) {
-  const parentDiv = e.path[2];
-  const elToDelete = e.path[1];
+const deleteElement = function (event) {
+  const eventPath = event.composedPath();
+  const parentDiv = eventPath[2];
+  const elToDelete = eventPath[1];
+  console.log(eventPath);
   console.log(e.path[1]);
   console.log(e.path[2]);
 
   parentDiv.removeChild(elToDelete);
 };
-
-// Watch each deleteBtn for click, fun delete element
-deleteBtns.forEach(btn => {
-  btn.addEventListener('click', deleteElement);
-});
 
 // Submit Form
 async function newFormHandler(event) {
@@ -140,4 +134,11 @@ async function newFormHandler(event) {
   }
 }
 
+// Event listener for add recipe button
 document.querySelector('#addButton').addEventListener('click', newFormHandler);
+// Event listener for addDirection button
+addDirectionBtn.addEventListener('click', addDirection);
+// Watch each deleteBtn for click, fun delete element
+deleteBtns.forEach(btn => {
+  btn.addEventListener('click', deleteElement);
+});
