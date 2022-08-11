@@ -39,7 +39,7 @@ router.get('/', withAuth, (req, res) => {
 
 //renders the add-recipe page
 router.get('/add-recipe', withAuth, (req, res) => {
-  res.render('add-recipe');
+  res.render('add-recipe', {loggedIn: true});
 });
 
 //renders the edit-recipe page
