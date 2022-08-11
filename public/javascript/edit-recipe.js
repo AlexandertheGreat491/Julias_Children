@@ -46,7 +46,7 @@ const addDirection = function () {
   let deleteButton = document.createElement('img');
   deleteButton.src = '../images/svg/delete_btn.svg';
   deleteButton.className = 'filter-blue h-9';
-  deleteButton.id = 'deleteBtn';
+  deleteButton.className = 'deleteBtn';
   directionCard.appendChild(deleteButton);
 
   // Add input and delete button to direction card
