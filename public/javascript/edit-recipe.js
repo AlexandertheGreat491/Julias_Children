@@ -18,10 +18,8 @@ const addIngredient = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.className = 'filter-blue h-9';
-  deleteButton.className = 'deleteBtn';
+  deleteButton.className = 'deleteBtn filter-blue h-9';
   ingredientCard.appendChild(deleteButton);
-
   ingredientsSection.appendChild(ingredientCard);
 };
 // Add ingredient card end
