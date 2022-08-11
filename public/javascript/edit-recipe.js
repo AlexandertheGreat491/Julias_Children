@@ -28,7 +28,7 @@ const addIngredient = function () {
 
 // Add direction card start
 const addDirectionBtn = document.querySelector('#addDirectionBtn');
-const directionSection = document.querySelector('#add-directions');
+const directionSection = document.querySelector('#edit-directions');
 
 const addDirection = function () {
   // Create div to hold direction input and delete button
