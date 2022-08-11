@@ -28,9 +28,9 @@ const addIngredient = function () {
 
 // Add direction card start
 const addDirectionBtn = document.querySelector('#addDirectionBtn');
+const directionSection = document.querySelector('#add-directions');
 
 const addDirection = function () {
-  const directionSection = document.querySelector('#add-directions');
   // Create div to hold direction input and delete button
   let directionCard = document.createElement('div');
   directionCard.className = 'flex items-center w-full';
