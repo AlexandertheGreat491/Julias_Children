@@ -18,8 +18,7 @@ const addIngredient = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../images/svg/delete_btn.svg';
-  deleteButton.className = 'filter-blue h-9';
-  deleteButton.id = 'deleteBtn';
+  deleteButton.classList.add('deleteBtn filter-blue h-9');
   ingredientCard.appendChild(deleteButton);
 
   ingredientsSection.appendChild(ingredientCard);
@@ -47,7 +46,7 @@ const addDirection = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.className = 'deleteBtn filter-blue h-9';
+  deleteButton.classList.add('deleteBtn filter-blue h-9');
   directionCard.appendChild(deleteButton);
 
   directionSection.appendChild(directionCard);
@@ -138,10 +137,25 @@ document.querySelector('#addButton').addEventListener('click', newFormHandler);
 // Event listener for addDirection button
 addDirectionBtn.addEventListener('click', addDirection);
 // Watch each deleteBtn for click, fun delete element
-deleteBtns.forEach(btn => {
-  btn.addEventListener('click', function(event) {
-    if (event.target.className === 'deleteBtn filter-blue h-9') {
-      deleteElement();
-    }
-  });
+
+ingredientsSection.addEventListener('click', function(event) {
+  // Only for elements with class 'deleteBtn'
+  if (event.target.classList.contains('deleteBtn')) {
+    deleteElement();
+  }
 });
+
+directionSection.addEventListener('click', function(event) {
+  // Only for elements with class 'deleteBtn'
+  if (event.target.classList.contains('deleteBtn')) {
+    deleteElement();
+  }
+});
+// deleteBtns.forEach(btn => {
+//   btn.addEventListener('click', function(event) {
+//     console.log(event.target);
+//     if (event.target.class === 'deleteBtn filter-blue h-9') {
+//       deleteElement();
+//     }
+//   });
+// });
