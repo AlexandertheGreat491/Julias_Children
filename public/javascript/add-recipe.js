@@ -18,8 +18,7 @@ const addIngredient = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../images/svg/delete_btn.svg';
-  deleteButton.className = 'filter-blue h-9';
-  deleteButton.id = 'deleteBtn';
+  deleteButton.className = 'filter-blue h-9 deleteBtn';
   ingredientCard.appendChild(deleteButton);
 
   ingredientsSection.appendChild(ingredientCard);
@@ -139,9 +138,5 @@ document.querySelector('#addButton').addEventListener('click', newFormHandler);
 addDirectionBtn.addEventListener('click', addDirection);
 // Watch each deleteBtn for click, fun delete element
 deleteBtns.forEach(btn => {
-  btn.addEventListener('click', function(event) {
-    if (event.target.className === 'deleteBtn filter-blue h-9') {
-      deleteElement();
-    }
-  });
+  btn.addEventListener('click', deleteElement);
 });
