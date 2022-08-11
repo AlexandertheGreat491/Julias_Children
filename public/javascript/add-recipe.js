@@ -50,7 +50,7 @@ const addDirection = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.classList.add('deleteBtn filter-blue h-9');
+  deleteButton.className = 'deleteBtn filter-blue h-9';
   directionCard.appendChild(deleteButton);
 
   directionSection.appendChild(directionCard);
