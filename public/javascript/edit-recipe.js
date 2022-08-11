@@ -1,6 +1,8 @@
 const ingredientsSection = document.querySelector('#edit-ingredients');
 const addIngredientBtn = document.querySelector('#addIngredientBtn');
 
+let deleteBtns = document.querySelectorAll('.deleteBtn');
+
 // Add ingredient card start
 const addIngredient = function () {
   // Create div to ingredient input and delete button
@@ -51,7 +53,9 @@ const addDirection = function () {
 };
 
 // Delete ingredient/direction handler start
-const deleteBtns = document.querySelectorAll('.deleteBtn');
+const findDeleteBtns = function () {
+  deleteBtns = document.querySelectorAll('.deleteBtn');
+};
 
 const deleteElement = function (event) {
   const eventPath = event.composedPath();
@@ -135,10 +139,16 @@ async function editFormHandler(event) {
 }
 
 document.querySelector('#edit-recipe-form').addEventListener('submit', editFormHandler);
+
 addIngredientBtn.addEventListener('click', addIngredient);
+
 addDirectionBtn.addEventListener('click', addDirection);
 
-// Watch each deleteBtn for click, delete selected element
-deleteBtns.forEach(btn => {
-  btn.addEventListener('click', deleteElement);
+// Watch each deleteBtn for click, fun delete element
+document.addEventListener('click', function () {
+  deleteBtns.forEach(btn => {
+    btn.addEventListener('click', deleteElement);
+  });
 });
+
+window.addEventListener('click', findDeleteBtns);

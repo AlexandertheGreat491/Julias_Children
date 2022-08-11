@@ -2,6 +2,8 @@ const ingredientsSection = document.querySelector('#add-ingredients');
 const addIngredientBtn = document.querySelector('#addIngredientBtn');
 const recipeForm = document.querySelector('#app-recipe');
 
+let deleteBtns = document.querySelectorAll('.deleteBtn');
+
 const addIngredient = function () {
   // Create div to ingredient input and delete button
   let ingredientCard = document.createElement('div');
@@ -18,7 +20,9 @@ const addIngredient = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../images/svg/delete_btn.svg';
-  deleteButton.className = 'deleteBtn filter-blue h-9';
+
+  deleteButton.className = 'filter-blue h-9 deleteBtn';
+
   ingredientCard.appendChild(deleteButton);
 
   ingredientsSection.appendChild(ingredientCard);
@@ -46,13 +50,15 @@ const addDirection = function () {
   // create delete button
   let deleteButton = document.createElement('img');
   deleteButton.src = '../../images/svg/delete_btn.svg';
-  deleteButton.className = 'deleteBtn filter-blue h-9';
+  deleteButton.classList.add('deleteBtn filter-blue h-9');
   directionCard.appendChild(deleteButton);
 
   directionSection.appendChild(directionCard);
 };
 
-const deleteBtns = document.querySelectorAll('.deleteBtn');
+const findDeleteBtns = function () {
+  deleteBtns = document.querySelectorAll('.deleteBtn');
+};
 
 const deleteElement = function (event) {
   const eventPath = event.composedPath();
@@ -136,7 +142,12 @@ async function newFormHandler(event) {
 document.querySelector('#addButton').addEventListener('click', newFormHandler);
 // Event listener for addDirection button
 addDirectionBtn.addEventListener('click', addDirection);
+
 // Watch each deleteBtn for click, fun delete element
-deleteBtns.forEach(btn => {
-  btn.addEventListener('click', deleteElement);
+document.addEventListener('click', function () {
+  deleteBtns.forEach(btn => {
+    btn.addEventListener('click', deleteElement);
+  });
 });
+
+window.addEventListener('click', findDeleteBtns);
