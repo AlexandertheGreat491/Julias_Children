@@ -84,8 +84,9 @@ Sources:
 
 [W3 Schools](https://www.w3schools.com/jsref/event_composedpath.asp)
 
-## Collaborators
-### [Alex Van Dyke], [Tran Loi], [Joey Rebne], [Jordan Degerness]
+Collaborators:
+
+[Alex Van Dyke], [Tran Loi], [Joey Rebne], [Jordan Degerness]
 
 ## License
 ### MIT
