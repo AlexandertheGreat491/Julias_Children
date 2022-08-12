@@ -47,6 +47,7 @@ They can also edit, making change to their recipe and even delete the recipe tha
 ## Credits
 
 Sources:
+
 [Connect-Session-Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 
 [Dotenv](https://www.npmjs.com/package/dotenv)
