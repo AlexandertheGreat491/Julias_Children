@@ -10,8 +10,7 @@
 * [Usage](#usage)
     * [As a viewer](#as-a-viewer)
     * [As a member](#as-a-member)
-* [Reference](#references)
-* [Credit](#credit)
+* [Credits](#credits)
 * [License](#license)
 
 ## Description
@@ -45,7 +44,9 @@ Once they become member, they can post their recipe
 They can also edit, making change to their recipe and even delete the recipe that they had posted
 ![edit recipe](./public/images/screenshots/edit-recipe.PNG)
 
-## References
+## Credits
+
+Sources:
 [Connect-Session-Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 
 [Dotenv](https://www.npmjs.com/package/dotenv)
