@@ -18,7 +18,7 @@ As a skilled home chef, I want to have the right recipe with precise ingredients
 
 ## Installation
 Pleas click the link to get the access to the app: [Julia's Children](https://secure-dusk-59698.herokuapp.com/).
-If you want to install the application, follow the link to [Public Repository](https://github.com/AlexandertheGreat491/Project-2.git).
+If you want to install the application, follow the link to the [Public Repository](https://github.com/AlexandertheGreat491/Project-2.git).
 
 ![landing_page_screenshot](https://user-images.githubusercontent.com/64184203/184187198-3c0e8bc4-9dc4-4034-900f-574b28181f07.jpg)
 
