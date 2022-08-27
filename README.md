@@ -32,7 +32,7 @@ Chefs can access to any recipe that match their skill and tool that they are pra
 ![as a viewer](./public/images/screenshots/as-a-viewer.PNG)
 
 ### As a member
-Chefs need to create an ID 
+Chefs will need to create an ID 
 
 ![ID create](./public/images/screenshots/as-a-member.PNG)
 
